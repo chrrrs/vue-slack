@@ -7,26 +7,26 @@
             Registrer ny bruger
           </div>
         </h2>
-        <form class="ui large form">
+        <form class="ui large form" :class="{'error' : hasErrors }">
           <div class="ui stacked segment">
 
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="name" placeholder="Navn" v-model="name">
+                <input type="text" name="name" placeholder="Navn" v-model.trim="name">
               </div>
             </div>
 
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="email" placeholder="E-mail" v-model="email">
+                <input type="text" name="email" placeholder="E-mail" v-model.trim="email">
               </div>
             </div>
 
             <div class="field">
               <div class="ui left icon input">
-                <i class="user icon"></i>
+                <i class="lock icon"></i>
                 <input type="password" name="password" placeholder="Password" v-model="password">
               </div>
             </div>
@@ -38,10 +38,14 @@
               </div>
             </div>
 
-            <div class="ui fluid large blue submit button" @click="register">Registrer</div>
+            <div class="ui fluid large blue submit button" @click.prevent="register" :class="{ 'loading': isLoading}">Registrer</div>
           </div>
 
-          <div class="ui error message"></div>
+          <div class="ui error message" v-if="hasErrors">
+            <p v-for="error in errors">
+              {{error}}
+            </p>
+          </div>
 
         </form>
 
@@ -54,6 +58,8 @@
 </template>
 
 <script>
+import md5 from 'md5'
+
 export default {
   name: 'register',
   data () {
@@ -61,15 +67,83 @@ export default {
       name: '',
       email: '',
       password: '',
-      password__confirmation: ''
+      password__confirmation: '',
+      errors: [],
+      usersRef: firebase.database().ref('users'),
+      isLoading: ''
+    }
+  },
+  computed: {
+    hasErrors() {
+      return this.errors.length > 0
     }
   },
   methods: {
-    register () {
+    register() {
       console.log('register')
+      this.errors = [];
+
+      if(this.isFormValid()) {
+        this.isLoading = true
+        firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then( user => {
+          console.log('brugeren er registreret ' + user.email)
+
+          user.updateProfile({
+            displayName: this.name,
+            photoURL: "http://www.gravatar.com/avatar/"+md5(user.email)+"?d=identicon"
+          }).then( () => {
+            this.saveUserToUsersRef(user).then( () => {
+              this.$store.dispatch('setUser', user)
+              this.$router.push('/')
+            })
+
+          }, error => {
+            console.log(error)
+            this.errors.push(error.message)
+            this.isLoading = false
+          })
+        }).catch(error => {
+          console.log(error)
+          this.errors.push(error.message)
+          this.isLoading = false
+        })
+      }
+    },
+    saveUserToUsersRef(user) {
+      return this.usersRef.child(user.uid).set({
+        name: user.displayName,
+        avatar: user.photoURL
+      })
+    },
+    isEmpty() {
+      if(this.name.length == 0 || this.email.length == 0 || this.password.length == 0 || this.password__confirmation.length ==  0) {
+        return true;
+      }
+      return false;
+    },
+    passwordValid() {
+      if(this.password < 6 || this.password__confirmation < 6) {
+        return false;
+      }
+      if (this.password !== this.password__confirmation) {
+        return false;
+      }
+      return true;
+    },
+    isFormValid() {
+      if(this.isEmpty()) {
+        this.errors.push('Udfyld alle felter')
+        return false;
+      }
+      if(!this.passwordValid()) {
+        this.errors.push('Forkert password')
+        return false;
+      }
+      return true;
     }
   }
 }
+
 </script>
 
 <style scoped>

@@ -17,6 +17,8 @@ let config = {
 };
 firebase.initializeApp(config);
 
+window.firebase = firebase
+
 new Vue({
   router,
   store,
