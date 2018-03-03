@@ -13,14 +13,16 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="email" placeholder="E-mail" v-model.trim="email" required>
+                <input type="text" name="email" placeholder="E-mail" v-model.trim="email" required
+                @keyup.enter="login">
               </div>
             </div>
 
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="Password" v-model.trim="password" required>
+                <input type="password" name="password" placeholder="Password" v-model.trim="password" required
+                @keyup.enter="login">
               </div>
             </div>
 
@@ -62,7 +64,6 @@ export default {
   },
   methods: {
     login() {
-      console.log('login')
 
       this.errors = []
 
