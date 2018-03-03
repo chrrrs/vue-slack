@@ -13,28 +13,28 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="name" placeholder="Navn" v-model.trim="name">
+                <input type="text" name="name" placeholder="Navn" v-model.trim="name" required>
               </div>
             </div>
 
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="email" placeholder="E-mail" v-model.trim="email">
+                <input type="text" name="email" placeholder="E-mail" v-model.trim="email" required>
               </div>
             </div>
 
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="Password" v-model="password">
+                <input type="password" name="password" placeholder="Password" v-model.trim="password" required>
               </div>
             </div>
 
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                <input type="password" name="password__confirmation" placeholder="Gentag Password" v-model="password__confirmation">
+                <input type="password" name="password__confirmation" placeholder="Gentag Password" v-model.trim="password__confirmation" required>
               </div>
             </div>
 
@@ -80,13 +80,11 @@ export default {
   },
   methods: {
     register() {
-      console.log('register')
       this.errors = [];
 
       if(this.isFormValid()) {
         this.isLoading = true
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then( user => {
-          console.log('brugeren er registreret ' + user.email)
 
           user.updateProfile({
             displayName: this.name,
