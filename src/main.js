@@ -19,8 +19,15 @@ firebase.initializeApp(config);
 
 window.firebase = firebase
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+
+  store.dispatch('setUser', user)
+
+  new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+
+  unsubscribe()
+})
