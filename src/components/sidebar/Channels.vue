@@ -4,7 +4,12 @@
     <h2 class="ui inverted center aligned header">Grupper <i class="add square icon add__channel" @click="openChannelModal"></i></h2>
     <div class="ui raised padded segment channels__list">
       <ul>
-        <li class="channels__item">Vue.js</li>
+        <li
+          class="channels__item"
+          v-for="channel in channels"
+          :key="channel.id"
+          :class="{'is_active': setChannelActive(channel)}"
+          @click="changeChannel(channel)">{{ channel.name }}</li>
       </ul>
     </div>
 
@@ -45,6 +50,9 @@
 </template>
 
 <script>
+
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'Channels',
   data() {
@@ -52,15 +60,32 @@ export default {
       channels: [],
       channelsRef: firebase.database().ref('channels'),
       new_channel: '',
-      errors: []
+      errors: [],
+      firstLoad: true
     }
   },
   computed: {
+    ...mapGetters(['currentChannel']),
     hasErrors() {
       return this.errors.length > 0
     }
   },
+  mounted() {
+    this.addListeners()
+  },
   methods: {
+    addListeners() {
+      this.channelsRef.on('child_added', snap => {
+        this.channels.push(snap.val())
+
+        if(this.firstLoad && this.channels.length > 0) {
+          this.$store.dispatch("setCurrentChannel", this.channels[0])
+        }
+
+        this.firstLoad = false
+
+      }) //child event listener
+    },
     openChannelModal() {
       $("#channelModal").modal('show')
     },
@@ -78,7 +103,19 @@ export default {
       }).catch( error => {
         this.errors.push(error.message)
       })
+    },
+    changeChannel(channel) {
+      this.$store.dispatch('setCurrentChannel', channel)
+    },
+    detachListeners() {
+      this.channelsRef.off
+    },
+    setChannelActive(channel) {
+      return channel.id === this.currentChannel.id
     }
+  },
+  beforeDestroy() {
+    this.detachListeners()
   }
 }
 </script>
@@ -99,6 +136,7 @@ export default {
     margin: 8px;
     list-style: none;
     background-color: #0187FA;
+    color: white;
     cursor: pointer;
     line-height: 30px;
     border-radius: 2px;
