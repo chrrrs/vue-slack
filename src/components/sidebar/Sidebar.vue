@@ -3,6 +3,9 @@
     <h1 class="ui inverted center aligned header">PKAP CHAT</h1>
     <ConnectedUser></ConnectedUser>
     <Channels></Channels>
+    <div class="ui divider">
+      <users></users>
+    </div>
 
   </div>
 </template>
@@ -11,10 +14,11 @@
 
   import ConnectedUser from './ConnectedUser';
   import Channels from './Channels';
+  import Users from './Users';
 
   export default {
     name: 'Sidebar',
-    components: { ConnectedUser, Channels },
+    components: { ConnectedUser, Channels, Users },
   }
 
 </script>
