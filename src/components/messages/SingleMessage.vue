@@ -1,8 +1,17 @@
-<template >
+<template>
   <div class="comment comment__container">
-    <a href="avatar">
+    <a class="avatar">
       <img :src="message.user.avatar"/>
     </a>
+    <div class="content">
+      <a class="author">{{ message.user.name }}</a>
+      <div class="metadata">
+        <span class="date comment__date">{{ message.timestamp }}</span>
+      </div>
+      <div class="text">
+        {{ message.content }}
+      </div>
+    </div>
   </div>
 </template>
 
