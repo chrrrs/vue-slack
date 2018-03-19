@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     currentUser: null,
-    currentChannel: null
+    currentChannel: null,
+    isPrivate: false
   },
   mutations: {
     SET_USER(state, user) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     SET_CURRENT_CHANNEL(state, channel) {
       state.currentChannel = channel
+    },
+    SET_PRIVATE(state, isPrivate) {
+      state.isPrivate = isPrivate
     }
   },
   actions: {
@@ -22,10 +26,14 @@ export default new Vuex.Store({
     },
     setCurrentChannel({commit}, channel) {
       commit("SET_CURRENT_CHANNEL", channel)
+    },
+    setPrivate({commit}, isPrivate) {
+      commit("SET_PRIVATE", isPrivate)
     }
   },
   getters: {
     currentUser: state => state.currentUser,
-    currentChannel: state => state.currentChannel
+    currentChannel: state => state.currentChannel,
+    isPrivate: state => state.isPrivate
   }
 })

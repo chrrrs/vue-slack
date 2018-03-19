@@ -105,6 +105,7 @@ export default {
       })
     },
     changeChannel(channel) {
+      this.$store.dispatch('setPrivate', false)
       this.$store.dispatch('setCurrentChannel', channel)
     },
     detachListeners() {
