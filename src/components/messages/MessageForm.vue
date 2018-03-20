@@ -7,19 +7,24 @@
         </div>
         <div class="field">
           <button class="ui green button" @click.prevent="sendMessage">send</button>
-          <button class="ui labeled icon button" @click.prevent="uploadFile"><i class="cloud upload icon"></i>Filer</button>
+          <button class="ui labeled icon button" @click="openFileModal"><i class="cloud upload icon"></i>Filer</button>
         </div>
       </div>
     </div>
+
+    <!-- File modal -->
+    <file-modal></file-modal>
   </div>
 </template>
 
 <script>
 
+import FileModal from './FileModal'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'message-form',
+  components: { FileModal },
   data() {
     return {
       message: '',
@@ -27,7 +32,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentChannel', ['currentUser']])
+    ...mapGetters(['currentChannel', 'currentUser', 'isPrivate'])
   },
   methods: {
     sendMessage() {
@@ -58,8 +63,22 @@ export default {
         }
       }
     },
-    uploadFile() {
+    uploadFile(file, metadata) {
+      if(file === null) return false
 
+      let pathToUpload = this.currentChannel.id
+      let ref = this.$parent.getMessageRef()
+      let filePath = this.getPath() + '/' + uuidV4() + '.jpg'
+    },
+    openFileModal() {
+      $("#fileModal").modal('show')
+    },
+    getPath() {
+      if(this.isPrivate) {
+        return 'chat/private'+this.currentChannel.id
+      } else {
+        return 'chat/public'
+      }
     }
   }
 }
