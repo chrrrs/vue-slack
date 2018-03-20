@@ -103,7 +103,7 @@ export default {
     },
     getPath() {
       if(this.isPrivate) {
-        return 'chat/private'+this.currentChannel.id
+        return 'chat/private/' + this.currentChannel.id
       } else {
         return 'chat/public'
       }
