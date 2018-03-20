@@ -12,6 +12,16 @@
       </div>
     </div>
 
+    <!-- Progress Bar -->
+    <div class="ui small orange inverted progress" data-total="100" id="uploadedFile">
+      <div class="bar">
+        <div class="progress"></div>
+      </div>
+      <div class="label">
+
+      </div>
+    </div>
+
     <!-- File modal -->
     <file-modal></file-modal>
   </div>
@@ -20,6 +30,7 @@
 <script>
 
 import FileModal from './FileModal'
+import uuidV4 from 'uuid/v4'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -28,7 +39,10 @@ export default {
   data() {
     return {
       message: '',
-      errors: []
+      errors: [],
+      storageRef: firebase.storage().ref(),
+      uploadTask: null,
+      uploadState: null
     }
   },
   computed: {
@@ -69,6 +83,20 @@ export default {
       let pathToUpload = this.currentChannel.id
       let ref = this.$parent.getMessageRef()
       let filePath = this.getPath() + '/' + uuidV4() + '.jpg'
+
+      // file upload
+      this.uploadTask = this.storageRef.child(filePath).put(file, metadata)
+      this.uploadState = 'uploading'
+
+      this.uploadTask.on('state_changed', snap => {
+        let percent = (snap.bytesTransferred /snap.totalBytes) * 100
+        $("#uploadedFile").progress('set percent', percent)
+
+      }, error => {
+        // error
+      }, () => {
+        // upload finished
+      })
     },
     openFileModal() {
       $("#fileModal").modal('show')
