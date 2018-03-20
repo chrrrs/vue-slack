@@ -17,13 +17,11 @@
       <div class="bar">
         <div class="progress"></div>
       </div>
-      <div class="label">
-
-      </div>
+      <div class="label">{{ uploadLabel }}</div>
     </div>
 
     <!-- File modal -->
-    <file-modal></file-modal>
+    <file-modal ref="file_modal"></file-modal>
   </div>
 </template>
 
@@ -46,7 +44,18 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentChannel', 'currentUser', 'isPrivate'])
+    ...mapGetters(['currentChannel', 'currentUser', 'isPrivate']),
+    uploadLabel() {
+      switch(this.uploadState) {
+        case 'uploading': return 'Filen lægges op...'
+          break;
+        case 'error': return 'Der skete en fejl'
+          break;
+        case 'done': return 'Filen er lagt op'
+          break;
+        default: return ''
+      }
+    }
   },
   methods: {
     sendMessage() {
@@ -66,9 +75,8 @@ export default {
       }
 
     },
-    createMessage() {
-      return {
-        content: this.message,
+    createMessage(fileUrl = null) {
+      let message = {
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         user: {
           name: this.currentUser.displayName,
@@ -76,6 +84,13 @@ export default {
           id: this.currentUser.uid
         }
       }
+
+      if(fileUrl == null) {
+        message['content'] = this.message
+      } else {
+        message['image'] = fileUrl
+      }
+      return message
     },
     uploadFile(file, metadata) {
       if(file === null) return false
@@ -94,9 +109,31 @@ export default {
 
       }, error => {
         // error
+        this.errors.push(error.message)
+        this.uploadState = 'error'
+        this.uploadTask = null
       }, () => {
         // upload finished
+        this.uploadState = 'done'
+        this.$refs.file_modal.resetForm()
+
+        // recover file url
+        let fileUrl = this.uploadTask.snapshot.downloadURL
+        this.sendFileMessage(fileUrl, ref, pathToUpload)
+
       })
+    },
+    sendFileMessage(fileUrl, ref, pathToUpload) {
+
+      ref.child(pathToUpload).push().set(this.createMessage(fileUrl))
+      .then( () => {
+        this.$nextTick(() => {
+          $("html, body").scrollTop($(document).height())
+        })
+      }).catch( error => {
+        this.errors.push(error.message)
+      })
+
     },
     openFileModal() {
       $("#fileModal").modal('show')
@@ -107,6 +144,12 @@ export default {
       } else {
         return 'chat/public'
       }
+    }
+  },
+  beforeDestory() {
+    if(this.uploadTask !== null) {
+      this.uploadTask.cancel()
+      this.uploadTask = null
     }
   }
 }
