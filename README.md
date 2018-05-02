@@ -1,4 +1,4 @@
-Alt-💬 PKAP - Your work is just one click away 😷
+💬 PKAP - Your work is just one click away 😷
 ======
 
 University project with a danish software client. Our goal is to build a platform which incorporates medical information as well as a direct communication linie between doctors and other medical staff.

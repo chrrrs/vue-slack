@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Chat from './pages/Chat'
+import Home from './pages/Home'
+import ICPC from './pages/Icpc'
 
 Vue.use(Router)
 
@@ -18,6 +20,10 @@ export default new Router({
     },
     {
       path: '/',
+      component: Home
+    },
+    {
+      path: '/chat',
       component: Chat,
       beforeEnter: (to, from, next) => {
         if(!firebase.auth().currentUser) {
@@ -26,6 +32,10 @@ export default new Router({
           next()
         }
       }
+    },
+    {
+      path: '/icpc',
+      component: ICPC
     }
   ]
 })

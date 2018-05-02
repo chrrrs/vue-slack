@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="login__container">
     <div class="ui middle aligned center aligned grid">
       <div class="column">
@@ -43,6 +44,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -73,7 +75,7 @@ export default {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then( user => {
 
           this.$store.dispatch('setUser', user)
-          this.$router.push('/')
+          this.$router.push('/chat')
 
         }).catch(error => {
           this.errors.push(error.message)

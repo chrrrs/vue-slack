@@ -28,7 +28,7 @@
 
           <div class="field">
             <label for="new_channel">Navngiv gruppe</label>
-            <input type="text" name="new_channel" v-model="new_channel" id="new_channel" />
+            <input type="text" name="new_channel" v-model="new_channel" id="new_channel" @keyup.enter="addChannel"/>
           </div>
 
           <div class="ui error message" v-if="hasErrors">

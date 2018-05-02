@@ -92,7 +92,7 @@ export default {
           }).then( () => {
             this.saveUserToUsersRef(user).then( () => {
               this.$store.dispatch('setUser', user)
-              this.$router.push('/')
+              this.$router.push('/login')
             })
 
           }, error => {
