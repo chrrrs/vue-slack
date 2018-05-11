@@ -3,21 +3,65 @@
         <div>
             <h1>ICPC Søgemaskine<span class="icon-wrapper"><i class="fas fa-question-circle"></i></span></h1>
         </div>
-        <searchbar></searchbar>
-        <div>
-            <search-component></search-component>
-        </div>
+        <form>
+            <div class="input-group searchbar__position">
+                <input v-model="searchContent" v-on:input="getPosts" class="form-control form-control-lg" type="text" aria-label="search" placeholder="Søg..." />
+                <i class="search__icon__wrapper fas fa-search"></i>
+            </div>
+        </form>
+        <ul>
+            <li v-for="bPost in blogPosts" :key="bPost.id">
+                <div id="accordion container">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" v-html="bPost.title.rendered">
+                            </button>
+                        </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body" v-html="bPost.content.rendered">
+                        </div>
+                        </div>
+                    </div>
+                            <router-link :to="{ name: 'Article', params: {id: bPost.id} }">Læs mere</router-link>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
-import Searchbar from '../components/search/Searchbar'
-import SearchComponent from '../components/search/SearchComponent'
 
 export default {
   name: 'ICPC',
-  components: {
-      Searchbar, SearchComponent
+  data() {
+      return {
+          blogPosts: [],
+          searchContent: ''
+      }
+  },
+  mounted() {
+      this.getPosts()
+  },
+  methods: {
+      getPosts() {
+
+          if(this.searchContent.length > 0) {
+              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent)
+                .then(response => response.json())
+                .then(posts => {
+                    this.blogPosts = posts
+                })
+          } else {
+            fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts')
+            .then(response => response.json())
+            .then(posts => {
+                this.blogPosts = posts
+            })
+          }
+      }
   }
 }
 </script>
@@ -42,5 +86,23 @@ h1 {
     font-size: 1.2em;
 }
 
+.input-group>.form-control:not(:last-child) {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+
+    .search__icon__wrapper {
+        background-color: white;
+        border: none;
+        border-radius: 0;
+        z-index: 5;
+        position: absolute;
+        right: 1rem;
+        bottom: 0;
+        top: 0;
+        margin-top: 1rem;
+        color: #4A33E8;
+        cursor: pointer;
+    }
 
 </style>

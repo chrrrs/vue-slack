@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import Chat from './pages/Chat'
 import Home from './pages/Home'
 import ICPC from './pages/Icpc'
+import Article from './pages/Article'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
     {
       path: '/icpc',
       component: ICPC
+    },
+    {
+      name: 'Article',
+      path: '/article/:id',
+      component: Article
     }
   ]
 })
