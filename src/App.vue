@@ -23,4 +23,8 @@ import CostumeFooter from './components/footer/CostumeFooter'
   font-family: 'Roboto', sans-serif;
 }
 
+  a {
+    color: #212529;
+  }
+
 </style>

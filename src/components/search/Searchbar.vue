@@ -4,8 +4,8 @@
         <input v-model="searchContent" v-on:input="searchbarListener" class="form-control form-control-lg" type="text" aria-label="search" placeholder="Søg..." />
         <i class="search__icon__wrapper fas fa-search"></i>
       </div>
-      <div class="search__view">
-        <div v-for="post in searchPosts" :key="post.id">
+      <div :class="{'search__view': searchContent}">
+        <div v-for="post in searchPosts" :key="post.id" class="searchDiv">
           <router-link :to="{ name: 'Article', params: {id: post.id} }">
             {{ post.title.rendered }}
           </router-link>
@@ -25,11 +25,15 @@ export default {
   },
   methods: {
     searchbarListener() {
-        fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent)
-          .then(response => response.json())
-          .then(posts => {
-              this.searchPosts = posts
-          })
+        if(this.searchContent.length > 1) {
+          fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=5')
+            .then(response => response.json())
+            .then(posts => {
+                this.searchPosts = posts
+            })
+        } else if (this.searchContent.length < 1 || this.searchContent == '') {
+          this.searchPosts = []
+        }
     }
   }
 }
@@ -57,6 +61,16 @@ export default {
     }
 
     .search__view {
-      
+      position: absolute;
+      line-height: 2;
+      border: 1px solid #e4e4e4;
+      border-top: none;
+      width: 100%;
+      border-radius: 0 0 .5rem .5rem;
+      padding: .5rem 1rem;
+      z-index: -1;
+      top: 39px;
+      background-color: white;
+      font-weight: 500;
     }
 </style>
