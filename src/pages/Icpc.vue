@@ -10,22 +10,22 @@
             </div>
         </form>
         <ul>
-            <li v-for="bPost in blogPosts" :key="bPost.id">
+            <li class="search__container__component" v-for="bPost in blogPosts" :key="bPost.id">
                 <div id="accordion container">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" v-html="bPost.title.rendered">
-                            </button>
+                            <router-link :to="{ name: 'Article', params: {id: bPost.id} }" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" v-html="bPost.title.rendered">
+                            </router-link>
                         </h5>
                         </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body" v-html="bPost.content.rendered">
                         </div>
-                        </div>
+                        </div> -->
                     </div>
-                            <router-link :to="{ name: 'Article', params: {id: bPost.id} }">Læs mere</router-link>
+                            <!-- <router-link :to="{ name: 'Article', params: {id: bPost.id} }">Læs mere</router-link> -->
                 </div>
             </li>
         </ul>
@@ -49,7 +49,7 @@ export default {
       getPosts() {
 
           if(this.searchContent.length > 0) {
-              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent)
+              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=10')
                 .then(response => response.json())
                 .then(posts => {
                     this.blogPosts = posts
@@ -103,6 +103,18 @@ h1 {
         margin-top: 1rem;
         color: #4A33E8;
         cursor: pointer;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    .search__container__component {
+        margin: 1rem 0;
     }
 
 </style>

@@ -1,12 +1,8 @@
 <template>
   <div class="sidebar__container">
-    <h1 class="ui inverted center aligned header">PKAP CHAT</h1>
-    <ConnectedUser></ConnectedUser>
+    <!-- <ConnectedUser></ConnectedUser> -->
     <Channels></Channels>
-    <div class="ui divider">
-      <users></users>
-    </div>
-
+    <users></users>
   </div>
 </template>
 
@@ -30,12 +26,15 @@
     display: flex;
     flex-flow: column nowrap;
     width: 300px;
-    padding: 10px;
     top: 0;
     left: 0;
     bottom: 0;
-    background-color: #E6EBF1;
+    background-color: #f3f3f3;
     padding-top: 110px;
+    z-index: 1;
+    -webkit-box-shadow: 2px 0px 10px 0px rgba(186,186,186,0.5);
+    -moz-box-shadow: 2px 0px 10px 0px rgba(186,186,186,0.5);
+    box-shadow: 2px 0px 10px 0px rgba(186,186,186,0.5);
 }
 
 </style>

@@ -12,7 +12,7 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-12 col-md footer__signature">
-                    <img class="mb-2" src="../../assets/pkap_logo.png" alt="KiAP Logo" width="100" height="40">
+                    <img class="mb-2" src="../../assets/kiap_color.svg" alt="KiAP Logo" width="100" height="40">
                     <p class="text-muted">Kommunikationsløsning samt informationssøgning i verdensklasse til din praksis. </p>
                     <small class="d-block mb-3 text-muted">&copy; 2018 Kvalitet i Almen Praksis.</small>
                 </div>

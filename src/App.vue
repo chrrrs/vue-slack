@@ -14,7 +14,7 @@ import CostumeFooter from './components/footer/CostumeFooter'
     name: 'app',
     components: {
       Navbar, CostumeFooter
-    },
+    }
   }
 </script>
 
@@ -23,8 +23,20 @@ import CostumeFooter from './components/footer/CostumeFooter'
   font-family: 'Roboto', sans-serif;
 }
 
-  a {
+a {
+  color: #212529;
+}
+
+a:hover {
     color: #212529;
   }
+
+.modal-backdrop {
+  display: none;
+}
+
+.modal-open {
+  padding-right: 0; 
+}
 
 </style>

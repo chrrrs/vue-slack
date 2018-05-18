@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg fixed-top navbar-default">
 
     <router-link class="navbar-brand" to="/">
-      <img src="../../assets/pkap_logo.png" width="80" height="30" class="d-inline-block align-top" alt="">
+      <img src="../../assets/kiap_white.svg" width="80" height="30" class="d-inline-block align-top" alt="">
       <span class="brand__subtitle">| Kvalitet i almen praksis</span>
     </router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,40 +14,37 @@
           <router-link class="nav-link" to="/">Forside</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Håndbogen</a>
-        </li>
-        <li class="nav-item">
           <router-link class="nav-link" to="/icpc">ICPC</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">DANPEP</a>
+          <router-link class="nav-link" to="/danpep">DANPEP</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Akkreditering</a>
+          <router-link class="nav-link" to="/akkreditering">Akkreditering</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Om KiAP</a>
+          <router-link class="nav-link" to="/om">Om KiAP</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Support</a>
+          <router-link class="nav-link" to="/support">Support</router-link>
         </li>
         <li class="nav-item" v-if="this.currentUser == null"> 
           <router-link class="nav-link logon__btn" to="/login">Log på</router-link>
         </li>
         <ul class="navbar-nav right" v-else>
           <li class="nav-item">
-            <a class="nav-link" href="#">Filer</a>
+            <router-link class="nav-link" to="/filer">Filer</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Chat</a>
+            <router-link class="nav-link" to="/chat">Chat</router-link>
           </li>
           <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Din profil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <router-link class="dropdown-item" to="/hjaelp">Hjælp</router-link>
+          <router-link class="dropdown-item" to="/indstillinger">Indstillinger</router-link>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" @click="logout">Log ud</a>
         </div>
@@ -85,7 +82,7 @@
 <style scoped>
 
 .navbar {
-  padding: .5rem 1rem 0 1rem;
+  padding: .5rem 1rem .5rem 1rem;
   color: white;
   background-color: #4A33E8;
   font-weight: 600;

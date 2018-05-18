@@ -31,7 +31,7 @@
           </div>
 
           <div class="ui error message" v-if="hasErrors">
-            <p v-for="error in errors">
+            <p v-for="error in errors" :key="error.index">
               {{error}}
             </p>
           </div>

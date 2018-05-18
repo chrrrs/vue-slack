@@ -1,8 +1,9 @@
 <template>
   <div class="channels__container">
-
-    <h2 class="ui inverted center aligned header">Grupper <i class="add square icon add__channel" @click="openChannelModal"></i></h2>
-    <div class="ui raised padded segment channels__list">
+    <div class="add__group__btn" @click="openChannelModal">
+      <h2>Tilføj gruppe <i class="fas fa-users"></i></h2>
+    </div>
+    <div class="channels__list">
       <ul>
         <li
           class="channels__item"
@@ -13,26 +14,24 @@
           <div class="ui label green circular channel__count" v-if="getNotification(channel) > 0 && channel.id !== currentChannel.id">
             {{ getNotification(channel) }}
           </div>
+          <i class="fas fa-users"></i>
         </li>
       </ul>
     </div>
 
     <!-- Modal -->
 
-    <div class="ui basic modal" id="channelModal">
-      <div class="ui icon header">
-        Ny Gruppe
-      </div>
+    <div class="my__modal modal" id="channelModal">
       <div class="content">
-        <div class="ui inverted form" :class="{'error' : hasErrors}">
+        <div class="form-group" :class="{'error' : hasErrors}">
 
           <div class="field">
             <label for="new_channel">Navngiv gruppe</label>
-            <input type="text" name="new_channel" v-model="new_channel" id="new_channel" @keyup.enter="addChannel"/>
+            <input class="form-control" type="text" name="new_channel" v-model="new_channel" id="new_channel" @keyup.enter="addChannel"/>
           </div>
 
           <div class="ui error message" v-if="hasErrors">
-            <p v-for="error in errors">
+            <p v-for="error in errors" :key="error.index">
               {{ error }}
             </p>
           </div>
@@ -40,7 +39,7 @@
         </div>
       </div>
       <div class="actions">
-        <div class="ui red cancel inverted button">
+        <div class="ui red cancel inverted button" @click="closeChannelModal">
           <i class="remove icon"></i> Annuller
         </div>
         <div class="ui green ok cancel inverted button" @click="addChannel">
@@ -124,6 +123,9 @@ export default {
     },
     openChannelModal() {
       $("#channelModal").modal('show')
+    },
+    closeChannelModal() {
+      $("#channelModal").modal('hide')
     },
     addChannel() {
       this.errors = []
@@ -209,6 +211,35 @@ export default {
   }
   .add__channel:hover{
     color: #007CD9;
+  }
+
+  .my__modal {
+    display: none;
+    top: 25vh;
+    width: 50%; /*this should be 80% */
+    margin: 0 auto;
+    height: fit-content;
+    background: white;
+    border: 1px solid #e2e2e2;
+    padding: 2rem 2rem;
+    border-radius: .5rem;
+    margin-left: 500px; /*change this */
+  }
+
+  .add__group__btn {
+    position: absolute;
+    bottom: 0;
+    background: #4a33e8;
+    width: 100%;
+    padding: .5rem 0;
+    cursor: pointer;
+  }
+
+  .add__group__btn h2 {
+    position: relative;
+    font-size: 1.5rem;
+    left: 25%;
+    color: white;
   }
 
 </style>

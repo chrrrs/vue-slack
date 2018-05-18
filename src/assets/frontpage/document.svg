@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 514.81 573.775">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #8171ef;
+      }
+
+      .cls-3 {
+        filter: url(#Rectangle_60);
+      }
+
+      .cls-4 {
+        filter: url(#Path_17);
+      }
+    </style>
+    <filter id="Path_17" x="0" y="0" width="399.484" height="535.564" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_60" x="115.326" y="38.211" width="399.484" height="535.564" filterUnits="userSpaceOnUse">
+      <feOffset dx="-5" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_124" data-name="Group 124" transform="translate(-1141.19 -1167.142)">
+    <g class="cls-4" transform="matrix(1, 0, 0, 1, 1141.19, 1167.14)">
+      <path id="Path_17-2" data-name="Path 17" class="cls-1" d="M0,0H339.484V475.564H0Z" transform="translate(30 29)"/>
+    </g>
+    <rect id="Rectangle_70" data-name="Rectangle 70" class="cls-2" width="195.122" height="13.008" rx="5" transform="translate(1193.601 1227.734)"/>
+    <rect id="Rectangle_71" data-name="Rectangle 71" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1267.571)"/>
+    <rect id="Rectangle_72" data-name="Rectangle 72" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1296.027)"/>
+    <rect id="Rectangle_73" data-name="Rectangle 73" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1324.482)"/>
+    <rect id="Rectangle_74" data-name="Rectangle 74" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1367.571)"/>
+    <rect id="Rectangle_78" data-name="Rectangle 78" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1487.897)"/>
+    <rect id="Rectangle_75" data-name="Rectangle 75" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1397.653)"/>
+    <rect id="Rectangle_79" data-name="Rectangle 79" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1517.978)"/>
+    <rect id="Rectangle_76" data-name="Rectangle 76" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1427.734)"/>
+    <rect id="Rectangle_80" data-name="Rectangle 80" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1548.06)"/>
+    <rect id="Rectangle_77" data-name="Rectangle 77" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1457.815)"/>
+    <rect id="Rectangle_81" data-name="Rectangle 81" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(1193.601 1578.141)"/>
+    <g id="Group_60" data-name="Group 60" transform="translate(1291.516 1234.354)">
+      <g class="cls-3" transform="matrix(1, 0, 0, 1, -150.33, -67.21)">
+        <rect id="Rectangle_60-2" data-name="Rectangle 60" class="cls-1" width="339.484" height="475.564" transform="translate(150.33 67.21)"/>
+      </g>
+      <rect id="Rectangle_61" data-name="Rectangle 61" class="cls-2" width="195.122" height="13.008" rx="5" transform="translate(22.41 31.592)"/>
+      <rect id="Rectangle_62" data-name="Rectangle 62" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(22.41 71.429)"/>
+      <rect id="Rectangle_63" data-name="Rectangle 63" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(22.41 99.885)"/>
+      <rect id="Rectangle_64" data-name="Rectangle 64" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(22.41 128.34)"/>
+      <rect id="Rectangle_65" data-name="Rectangle 65" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(22.41 171.429)"/>
+      <rect id="Rectangle_66" data-name="Rectangle 66" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(22.41 201.511)"/>
+      <rect id="Rectangle_67" data-name="Rectangle 67" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(22.41 231.592)"/>
+      <rect id="Rectangle_68" data-name="Rectangle 68" class="cls-2" width="289.431" height="13.008" rx="5" transform="translate(22.41 261.673)"/>
+    </g>
+  </g>
+</svg>

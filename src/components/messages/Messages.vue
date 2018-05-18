@@ -2,25 +2,44 @@
   <div class="messages__container">
     <div class="messages__content">
       <h2 class="ui inverted center aligned header"> {{ channelName }}</h2>
-      <div class="ui segment">
-        <div class="ui comments">
+      <div>
+        <div class="container-fluid">
           <!-- Single messages -->
           <transition-group tag="div" name="list">
             <span :class="message" v-for="message in messages" :key="message.id">
-              <div class="comment comment__container">
-                <a class="avatar">
-                  <img :src="message.user.avatar"/>
-                </a>
-                <div class="content" :class="{'comment__self': selfMessage(message.user)}">
-                  <a class="author">{{ message.user.name }}</a>
+              <div v-if="selfMessage(message.user)">
+              <div class="row user__message__wrapper">
+                <div class="content message__wrapper">
+                  <a>{{ message.user.name }}</a>
                   <div class="metadata">
-                    <span class="date comment__date">{{ message.timestamp | fromNow }}</span>
+                    <span class="text-muted comment__date">{{ message.timestamp | fromNow }}</span>
                   </div>
                   <div class="text" v-if="!isFile(message)">
                     {{ message.content }}
                   </div>
-                  <img class="ui image comment__image" :src="message.image" alt="billede" v-else>
+                  <img class="img-fluid comment__image" :src="message.image" alt="billede" v-else>
                 </div>
+                <a class="img-circle">
+                  <img class="img-thumbnail rounded-circle" :src="message.user.avatar"/>
+                </a>
+              </div>
+              </div>
+              <div v-else>
+              <div class="row">
+                <a class="img-circle">
+                  <img class="img-thumbnail rounded-circle" :src="message.user.avatar"/>
+                </a>
+                <div class="content message__wrapper" :class="{'comment__self': selfMessage(message.user)}">
+                  <a>{{ message.user.name }}</a>
+                  <div class="metadata">
+                    <span class="text-muted comment__date">{{ message.timestamp | fromNow }}</span>
+                  </div>
+                  <div class="text" v-if="!isFile(message)">
+                    {{ message.content }}
+                  </div>
+                  <img class="img-fluid comment__image" :src="message.image" alt="billede" v-else>
+                </div>
+              </div>
               </div>
             </span>
           </transition-group>
@@ -132,8 +151,8 @@
 
   .messages__container{
     position: relative;
-    background-color: #2a2a2e;
-    padding: 10px 30px 210px 30px;
+    background-color: #f3f3f3;
+    padding: 10px 100px 210px 100px;
     margin-left: 300px;
     min-height: 100vh;
   }
@@ -148,8 +167,6 @@
     transform: translateX(30px);
   }
 
-  /* Comment css */
-
   .comment__container pre{
    font-size: 0.9em;
    background: #232323;
@@ -157,7 +174,9 @@
   }
   .comment__self{
    border-left: 10px solid orange;
-   padding-left: 8px;
+   padding-left: 10px;
+   width: 80%;
+   margin-left: 10px;
   }
   .comment__image{
    min-height: 100px;
@@ -167,4 +186,19 @@
    color: #767676;
   }
 
+  .content {
+    padding-left: 10px;
+  }
+
+  .message__wrapper {
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    margin: 10px 10px;
+    width: 70%;
+  }
+
+  .user__message__wrapper {
+    justify-content: flex-end
+  }
 </style>

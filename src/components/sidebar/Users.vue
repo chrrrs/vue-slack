@@ -1,6 +1,5 @@
 <template >
   <div class="users__container">
-    <h2 class="ui inverted center aligned header">Brugere</h2>
     <div class="ui feed" v-for="user in users" :key="user.uid" :class="{'is_active': isActive(user)}" @click.prevent="changeChannel(user)">
       <div class="event">
         <div class="label">

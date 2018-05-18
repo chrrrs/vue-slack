@@ -1,6 +1,8 @@
 <template>
-  <div class="ui modal" id="fileModal">
-        <i class="close icon"></i>
+  <div class="my__modal modal" id="fileModal">
+        <span @click="closeFileModal" class="close__btn">
+          <i class="fas fa-times"></i>
+        </span>
         <div class="header">
             Send en fil
         </div>
@@ -8,14 +10,14 @@
             <div class="description">
                 <div class="ui header">Valg en fil <em>( jpg, png, 1 mb max )</em></div>
                 <form class="ui form">
-                    <div class="field">
-                        <input type="file" name="file" id="file" @change="addFile">
+                    <div class="costume-file">
+                        <input class="costume-file-input" type="file" name="file" id="file" @change="addFile">
                     </div>
                 </form>
 
             </div>
         </div>
-        <div class="actions">
+        <div class="actions" @click="closeFileModal">
             <div class="ui black deny button">
                 Annuller
             </div>
@@ -60,6 +62,9 @@ export default {
       let index = this.authorized.indexOf(mime.lookup(filename))
       return index !== -1
     },
+    closeFileModal() {
+      $("#fileModal").modal('hide')
+    },
     resetForm() {
       console.log("reset form")
       $(".form").trigger('reset')
@@ -70,4 +75,22 @@ export default {
 </script>
 
 <style scoped>
+  .my__modal {
+    display: none;
+    top: 25vh;
+    width: 50%; /*this should be 80% */
+    margin: 0 auto;
+    height: fit-content;
+    background: white;
+    border: 1px solid #e2e2e2;
+    padding: 2rem 2rem;
+    border-radius: .5rem;
+    margin-left: 500px; /*change this */
+  }
+
+  .close__btn {
+    float: right;
+    cursor: pointer;
+  }
+
 </style>

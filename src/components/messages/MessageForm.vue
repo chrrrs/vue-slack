@@ -1,11 +1,11 @@
 <template >
   <div class="messages__form">
     <div class="ui inverted form">
-      <div class="two fields">
-        <div class="field">
-          <textarea name="message" id="message" v-model.trim="message" rows="3" placeholder="skriv besked..."></textarea>
+      <div class="row container message__form__container">
+        <div class="col-sm-9">
+          <textarea class="form-control" name="message" id="message" v-model.trim="message" rows="3" placeholder="skriv besked..."></textarea>
         </div>
-        <div class="field">
+        <div class="col-sm-3">
           <button class="ui green button" @click.prevent="sendMessage">send</button>
           <button class="ui labeled icon button" @click="openFileModal" :class="{'disabled': uploadState == 'uploading'}"><i class="cloud upload icon"></i>Filer</button>
         </div>
@@ -160,18 +160,26 @@ export default {
   .messages__form{
     position: fixed;
     bottom: 0;
-    background-color:#232323;
+    background-color:#f3f3f3;
     padding: 10px;
     padding-top: 20px;
     height: 210px;
     left: 300px;
     right: 0;
+    -webkit-box-shadow: 0px -2px 10px 0px rgba(186,186,186,0.5);
+    -moz-box-shadow: 0px -2px 10px 0px rgba(186,186,186,0.5);
+    box-shadow: 0px -2px 10px 0px rgba(186,186,186,0.5);
   }
   .messages__form.big{
     height: 350px;
   }
   .shortcut{
     color:white;
+  }
+
+  .message__form__container {
+    margin: 0 auto;
+    padding-top: 1.5rem;
   }
 
 </style>
