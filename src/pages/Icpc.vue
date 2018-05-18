@@ -14,10 +14,11 @@
                 <div id="accordion container">
                     <div class="card">
                         <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <router-link :to="{ name: 'Article', params: {id: bPost.id} }" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" v-html="bPost.title.rendered">
-                            </router-link>
+                        <h5 class="mb-0"  v-html="bPost.title.rendered">
                         </h5>
+                            <router-link :to="{ name: 'Article', params: {id: bPost.id} }">
+                                <span class="article__arrow"><i class="fas fa-angle-right"></i></span>
+                            </router-link>
                         </div>
 
                         <!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
@@ -71,6 +72,7 @@ export default {
 
 .icpc__wrapper {
     margin-top: 100px;
+    min-height: 90vh;
 }
 
 h1 {
@@ -115,6 +117,19 @@ h1 {
 
     .search__container__component {
         margin: 1rem 0;
+    }
+
+    .article__arrow {
+        position: absolute;
+        right: 0;
+        bottom: 14%;
+        padding: 0 1.5rem;
+        font-size: 1.5em;
+        border-left: solid 2px #bdbdbd;
+    }
+
+    .fa-angle-right {
+        color: #9e9e9e;
     }
 
 </style>

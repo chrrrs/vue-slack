@@ -2,7 +2,9 @@
   <div id="app">
     <Navbar></Navbar>
     <router-view></router-view>
-    <costume-footer></costume-footer>
+    <div v-if="this.$route.name != 'Chat'">
+      <costume-footer></costume-footer>
+    </div>
   </div>
 </template>
 
@@ -21,6 +23,7 @@ import CostumeFooter from './components/footer/CostumeFooter'
 <style>
 * {
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 a {

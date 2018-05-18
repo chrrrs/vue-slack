@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="jumbotron">
+            
         </div>
 
         <searchbar class="searchbar__position"></searchbar>
@@ -9,7 +10,7 @@
             <div class="row">
                 <div class="col-sm" v-for="mainContent in mainContents" :key="mainContent.id">
                     <router-link :to="mainContent.link">
-                        <img :src="mainContent.image" :alt="mainContent.title" class="img-fluid">
+                        <img :src="mainContent.image" :alt="mainContent.title" class="img-fluid home__featured__img">
                         <span class="content__tag">{{ mainContent.title }}</span>
                     </router-link>
                 </div>
@@ -97,5 +98,11 @@ export default {
     .info__container {
         margin-top: 4rem;
         margin-bottom: 4rem;
+    }
+
+    .home__featured__img {
+        height: 170px;
+        width: 255px;
+        object-fit: cover;
     }
 </style>

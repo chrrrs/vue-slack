@@ -25,6 +25,7 @@ export default new Router({
       component: Home
     },
     {
+      name: 'Chat',
       path: '/chat',
       component: Chat,
       beforeEnter: (to, from, next) => {

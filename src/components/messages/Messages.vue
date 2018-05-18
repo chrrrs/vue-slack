@@ -152,7 +152,7 @@
   .messages__container{
     position: relative;
     background-color: #f3f3f3;
-    padding: 10px 100px 210px 100px;
+    padding: 10px 70px 210px 70px;
     margin-left: 300px;
     min-height: 100vh;
   }
