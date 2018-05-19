@@ -1,6 +1,6 @@
 <template>
-<div>
-  <div class="login__container">
+<div class="login__container">
+  <!-- <div class="login__container">
     <div class="ui middle aligned center aligned grid">
       <div class="column">
         <h2 class="ui blue image header">
@@ -14,7 +14,7 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="email" placeholder="E-mail" v-model.trim="email" required
+                <input type="text" name="email" placeholder="Email" v-model.trim="email" required
                 @keyup.enter="login">
               </div>
             </div>
@@ -43,14 +43,39 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="container">
     <form>
-        <div class="form-group">
-          <div class="mb-2">
-            <button class="btn btn-block btn-primary transition-3d-hover">Login</button>
+        <div class="form-group col-lg-6 container">
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input type="email" class="form-control" name="email" placeholder="Email" v-model.trim="email" required @keyup.enter="login">
+          </div>
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-unlock"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password" placeholder="Password" v-model.trim="password" required @keyup.enter="login">
+          </div>
+          <div class="mb-4">
+            <button class="btn btn-lg btn-block btn-primary transition-3d-hover" @click.prevent="login">Login</button>
+          </div>
+          <div class="text-center mb-2">
+            <p class="text-muted">Ikke bruger? <router-link to="/register">Registrer</router-link></p>
           </div>
         </div>
+
+        <div class="alert alert-danger col-md-6 container" role="alert" v-if="hasErrors">
+          <h4 class="alert-heading">Fejl, prøv igen</h4>
+          <hr>
+          <p v-for="error in errors" :key="error.index">
+             {{error}}
+          </p>
+          <hr>
+        </div>
+
     </form>
   </div>
 </div>
@@ -105,11 +130,7 @@ export default {
 
 <style scoped>
   .login__container {
-    margin-top: 40px;
-  }
-
-  .column {
-    max-width: 450px;
+    margin: 25vh 0;
   }
 
   .transition-3d-hover {
@@ -118,5 +139,9 @@ export default {
 
   .transition-3d-hover:hover {
     transform: translateY(-3px);
+  }
+
+  .text-muted a {
+    color: #007bff;
   }
 </style>

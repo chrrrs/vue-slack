@@ -1,23 +1,27 @@
 <template >
   <div class="messages__form">
-    <div class="ui inverted form">
+    <div class="form-group container">
       <div class="row container message__form__container">
-        <div class="col-sm-9">
+        <div class="col-sm-8">
           <textarea class="form-control" name="message" id="message" v-model.trim="message" rows="3" placeholder="skriv besked..."></textarea>
         </div>
-        <div class="col-sm-3">
-          <button class="ui green button" @click.prevent="sendMessage">send</button>
-          <button class="ui labeled icon button" @click="openFileModal" :class="{'disabled': uploadState == 'uploading'}"><i class="cloud upload icon"></i>Filer</button>
+        <div class="col-sm-4">
+          <button class="btn btn-lg btn-success" @click.prevent="sendMessage">send</button>
+          <button class="btn btn-lg" @click="openFileModal" :class="{'disabled': uploadState == 'uploading'}"><i class="far fa-file"></i></button>
         </div>
       </div>
     </div>
 
     <!-- Progress Bar -->
-    <div class="ui small orange inverted progress" data-total="100" id="uploadedFile" v-if="uploadState != null">
+    <!-- <div class="ui small orange inverted progress" data-total="100" id="uploadedFile" v-if="uploadState != null">
       <div class="bar">
         <div class="progress"></div>
       </div>
       <div class="label">{{ uploadLabel }}</div>
+    </div> -->
+
+    <div class="progress" v-if="uploadState != null">
+      <div id="uploadedFile" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" v-bind:style="{width: this.progressPercentage + '%'}"></div>
     </div>
 
     <!-- File modal -->
@@ -40,22 +44,12 @@ export default {
       errors: [],
       storageRef: firebase.storage().ref(),
       uploadTask: null,
-      uploadState: null
+      uploadState: null,
+      progressPercentage: ''
     }
   },
   computed: {
-    ...mapGetters(['currentChannel', 'currentUser', 'isPrivate']),
-    uploadLabel() {
-      switch(this.uploadState) {
-        case 'uploading': return 'Filen lægges op...'
-          break;
-        case 'error': return 'Der skete en fejl'
-          break;
-        case 'done': return 'Filen er lagt op'
-          break;
-        default: return ''
-      }
-    }
+    ...mapGetters(['currentChannel', 'currentUser', 'isPrivate'])
   },
   methods: {
     sendMessage() {
@@ -106,6 +100,7 @@ export default {
       this.uploadTask.on('state_changed', snap => {
         let percent = (snap.bytesTransferred /snap.totalBytes) * 100
         $("#uploadedFile").progress('set percent', percent)
+        this.progressPercentage = percent
 
       }, error => {
         // error

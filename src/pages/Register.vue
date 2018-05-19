@@ -1,6 +1,6 @@
 <template>
-  <div class="login__container">
-    <div class="ui middle aligned center aligned grid">
+  <div class="register__container">
+    <!-- <div class="ui middle aligned center aligned grid">
       <div class="column">
         <h2 class="ui blue image header">
           <div class="content">
@@ -53,7 +53,53 @@
           Allerede bruger? <router-link to="/login">Login</router-link>
         </div>
       </div>
-    </div>
+    </div> -->
+    <div class="container">
+    <form>
+        <div class="form-group col-lg-6 container">
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" name="name" placeholder="Navn" v-model.trim="name" required>
+          </div>
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input type="email" class="form-control" name="email" placeholder="Email" v-model.trim="email" required>
+          </div>
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-unlock"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password" placeholder="Password" v-model.trim="password" required>
+          </div>
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-unlock"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password__confirmation" placeholder="Gentag password" v-model.trim="password__confirmation" required>
+          </div>
+          <div class="mb-4">
+            <button class="btn btn-lg btn-block btn-primary transition-3d-hover" @click.prevent="register">Registrer</button>
+          </div>
+          <div class="text-center mb-2">
+            <p class="text-muted">Allerede bruger? <router-link to="/login">Login</router-link></p>
+          </div>
+        </div>
+
+        <div class="alert alert-danger col-md-6 container" role="alert" v-if="hasErrors">
+          <h4 class="alert-heading">Fejl, prøv igen</h4>
+          <hr>
+          <p v-for="error in errors" :key="error.index">
+             {{error}}
+          </p>
+          <hr>
+        </div>
+
+    </form>
+  </div>
   </div>
 </template>
 
@@ -145,11 +191,11 @@ export default {
 </script>
 
 <style scoped>
-.login__container {
-  margin-top: 40px;
+.register__container {
+  margin: 25vh 0;
 }
 
-.column {
-  max-width: 450px;
-}
+.text-muted a {
+    color: #007bff;
+  }
 </style>

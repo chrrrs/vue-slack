@@ -8,8 +8,8 @@
 
         <section class="container main__section">
             <div class="row">
-                <div class="col-sm" v-for="mainContent in mainContents" :key="mainContent.id">
-                    <router-link :to="mainContent.link">
+                <div class="col-md" v-for="mainContent in mainContents" :key="mainContent.id">
+                    <router-link class="img__link" :to="mainContent.link">
                         <img :src="mainContent.image" :alt="mainContent.title" class="img-fluid home__featured__img">
                         <span class="content__tag">{{ mainContent.title }}</span>
                     </router-link>
@@ -23,12 +23,12 @@
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>    
                 </div>
                 <div class="col-sm">
-                    <img src="../assets/frontpage/document.svg" alt="document illustration" class="img-fluid">
+                    <img src="../assets/frontpage/document.svg" alt="document illustration" class="img-responsive center-block">
                 </div>
             </div>
             <div class="row info__container">
                 <div class="col-sm">
-                    <img src="../assets/frontpage/chat.svg" alt="chat mockup" class="img-fluid">
+                    <img src="../assets/frontpage/chat.svg" alt="chat mockup" class="img-responsive center-block">
                 </div>
                 <div class="col-sm">
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>    
@@ -86,13 +86,21 @@ export default {
         width: 60%;
     }
 
+    .img__link {
+        height: auto;
+        margin: auto;
+        text-align: center;
+        position: relative;
+    }
+
     .content__tag {
         position: absolute;
-        bottom: 30px;
+        top: 50px;
         font-size: 1.5em;
         font-weight: 500;
         color: white;
-        left: 33%;
+        left: 0;
+        right: 0;
     }
 
     .info__container {

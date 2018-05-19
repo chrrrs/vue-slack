@@ -50,7 +50,7 @@ export default {
       getPosts() {
 
           if(this.searchContent.length > 0) {
-              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=10')
+              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=15')
                 .then(response => response.json())
                 .then(posts => {
                     this.blogPosts = posts

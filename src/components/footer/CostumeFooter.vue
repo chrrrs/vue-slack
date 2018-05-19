@@ -74,6 +74,7 @@ export default {
         color: white;
         padding-left: 0;
         font-weight: 600;
+        padding-top: 5px;
     }
 
     .contact__button {
