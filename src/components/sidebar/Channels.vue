@@ -3,18 +3,21 @@
     <div class="add__group__btn" @click="openChannelModal">
       <h2>Tilføj gruppe <i class="fas fa-users"></i></h2>
     </div>
-    <div class="channels__list">
+    <div class="channels__list container">
       <ul>
         <li
-          class="channels__item"
+          class="channels__item row"
           v-for="channel in channels"
           :key="channel.id"
           :class="{'is_active': setChannelActive(channel)}"
-          @click="changeChannel(channel)">{{ channel.name }}
-          <div class="ui label green circular channel__count" v-if="getNotification(channel) > 0 && channel.id !== currentChannel.id">
+          @click="changeChannel(channel)">
+          <div class="rounded-circle channels__indicator__item">
+            <i class="fas fa-users"></i>
+          </div>
+          <p>{{ channel.name }}</p>
+          <div class="notification__label green circular channel__count" v-if="getNotification(channel) > 0 && channel.id !== currentChannel.id">
             {{ getNotification(channel) }}
           </div>
-          <i class="fas fa-users"></i>
         </li>
       </ul>
     </div>
@@ -22,10 +25,10 @@
     <!-- Modal -->
 
     <div class="my__modal modal" id="channelModal">
-      <div class="content">
+      <div class="container">
         <div class="form-group" :class="{'error' : hasErrors}">
 
-          <div class="field">
+          <div>
             <label for="new_channel">Navngiv gruppe</label>
             <input class="form-control" type="text" name="new_channel" v-model="new_channel" id="new_channel" @keyup.enter="addChannel"/>
           </div>
@@ -38,12 +41,12 @@
 
         </div>
       </div>
-      <div class="actions">
-        <div class="ui red cancel inverted button" @click="closeChannelModal">
-          <i class="remove icon"></i> Annuller
+      <div class="container btn-group">
+        <div class="btn btn-outline-danger" @click="closeChannelModal">
+          Annuller
         </div>
-        <div class="ui green ok cancel inverted button" @click="addChannel">
-          <i class="checkmark icon"></i> Accepter
+        <div class="btn btn-success" @click="addChannel">
+          <i class="fas fa-check"></i> Accepter
         </div>
       </div>
 
@@ -184,27 +187,27 @@ export default {
     padding: 0;
   }
   .channels__item{
-    height: 30px;
-    margin: 8px;
+    padding: 8px 0;
     list-style: none;
-    background-color: #0187FA;
     color: white;
     cursor: pointer;
     line-height: 30px;
     border-radius: 2px;
-    padding-left: 12px;
     font-weight: bold;
     font-size: 1.1em;
+    align-items: center;
   }
+
+  .channels__item p {
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    color: #212529;
+  }
+
   .channel__count{
     float:right;
   }
-  .is_active{
-    background-color: #9740c5;
-  }
-  .channels__item:hover{
-    background-color: #007CD9;
-  }
+
   .add__channel{
     cursor: pointer;
     color: #0187FA;
@@ -229,17 +232,30 @@ export default {
   .add__group__btn {
     position: absolute;
     bottom: 0;
-    background: #4a33e8;
+    left: 0;
+    background: #2962ff;
     width: 100%;
-    padding: .5rem 0;
     cursor: pointer;
   }
 
   .add__group__btn h2 {
     position: relative;
     font-size: 1.5rem;
-    left: 25%;
+    text-align: center;
+    margin-top: 10px;
     color: white;
+  }
+
+  .channels__indicator__item {
+    background: #2962ff;
+    padding: 28px 32px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .my__modal {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 
 </style>

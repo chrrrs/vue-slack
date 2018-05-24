@@ -1,7 +1,17 @@
 <template>
     <div class="container icpc__wrapper">
         <div>
-            <h1>ICPC Søgemaskine<span class="icon-wrapper"><i class="fas fa-question-circle"></i></span></h1>
+            <h1>ICPC Søgemaskine<span class="icon-wrapper" @click="toggleHelp"><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Hvad er ICPC?"></i></span></h1>
+        </div>
+        <div class="container help__video__container">
+            <div class="container">
+                <h5>[THIS IS TITLE]</h5>
+                <!-- <video controls class="embed-responsive">
+                    <source src="../assets/frontpage/klynger.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> -->
+                <p>[HERE GOES CONTENT]</p>
+            </div>
         </div>
         <form>
             <div class="input-group searchbar__position">
@@ -45,6 +55,7 @@ export default {
   },
   mounted() {
       this.getPosts()
+      this.tooltips()
   },
   methods: {
       getPosts() {
@@ -62,6 +73,14 @@ export default {
                 this.blogPosts = posts
             })
           }
+      },
+      tooltips() {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+      },
+      toggleHelp() {
+        $('.help__video__container').toggle()
       }
   }
 }
@@ -77,7 +96,7 @@ export default {
 
 h1 {
     text-align: center;
-    color: #4A33E8;
+    color: #2962ff;
     font-size: 1.5rem;
     font-weight: 600;
     padding: 1rem 0;
@@ -85,7 +104,8 @@ h1 {
 
 .fa-question-circle {
     padding-bottom: 10px;
-    font-size: 1.2em;
+    font-size: 1.7em;
+    cursor: pointer;
 }
 
 .input-group>.form-control:not(:last-child) {
@@ -103,7 +123,7 @@ h1 {
         bottom: 0;
         top: 0;
         margin-top: 1rem;
-        color: #4A33E8;
+        color: #2962ff;
         cursor: pointer;
     }
 
@@ -130,6 +150,14 @@ h1 {
 
     .fa-angle-right {
         color: #9e9e9e;
+    }
+
+    .help__video__container {
+        background: rgb(241, 241, 241);
+        border-radius: 0.5rem;
+        margin: 0px auto 2rem;
+        padding: 20px;
+        display: none;
     }
 
 </style>

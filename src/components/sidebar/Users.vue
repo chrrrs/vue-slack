@@ -1,13 +1,11 @@
 <template >
-  <div class="users__container">
+  <div class="users__container container">
     <div class="ui feed" v-for="user in users" :key="user.uid" :class="{'is_active': isActive(user)}" @click.prevent="changeChannel(user)">
-      <div class="event">
-        <div class="label">
-          <img :src="user.avatar" alt="avatar">
-        </div>
-        <div class="content">
-          <span class="ui empty circular label connection__label" :class="{'green': isOnline(user), 'red': !isOnline(user)}"></span>
+      <div class="row">
+        <img class="rounded-circle" :src="user.avatar" alt="avatar">
+        <div>
           <span class="user__label"> {{ user.name }}</span>
+          <span class="status__label rounded-circle connection__label" :class="{'green': isOnline(user), 'red': !isOnline(user)}"></span>
           <div class="ui red label channel__count circular" v-if="getNotification(user) >= 1">
             {{ getNotification(user) }}
           </div>
@@ -167,17 +165,21 @@ export default {
 <style scoped>
 
   .users__container{
-    overflow-y: auto;
+    min-height: 100px;
+    max-height: 300px!important;
+    overflow-y: auto!important;
   }
-  .users__container .feed{
+
+  .users__container .row{
     cursor: pointer;
     padding: 4px;
     border-radius: 4px;
+    align-items: center;
   }
-  .users__container .feed:hover{
+  .users__container .row:hover{
     background: #FFFFFF;
   }
-  .users__container .feed.is_active{
+  .users__container .row.is_active{
     background: #FFFFFF;
   }
   .connection__label{
@@ -191,5 +193,19 @@ export default {
   }
   .channel__count{
     float:right;
+  }
+
+  .status__label {
+    background: grey;
+    width: 15px;
+    height: 15px;
+  }
+
+  .status__label.red {
+    background-color: #dc3545;
+  }
+
+  .status__label.green {
+    background-color: #28a745;
   }
 </style>

@@ -56,7 +56,7 @@ export default {
         bottom: 0;
         top: 0;
         margin-top: 1rem;
-        color: #4A33E8;
+        color: #2962ff;
         cursor: pointer;
     }
 

@@ -19,19 +19,24 @@
 
         <section class="new__user__content container">
             <div class="row info__container">
-                <div class="col-sm">
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>    
+                <div class="col-lg">
+                    <h5>Program for kvalitetsudvikling i almen praksis har til formål.</h5>
+                    <p>At fremme og understøtte at alle praktiserende læger finder sammen i faglige fællesskaber (klynger), som mødes og arbejder med kvalitetsdata og kvalitetsudvikling. Det forudsættes, at programmet inddrager og bygger videre på den og de erfaringer, som allerede er etableret i relation til datadrevet kvalitetsudvikling og samarbejdet mellem almen praksis og regionerne.</p>    
                 </div>
-                <div class="col-sm">
-                    <img src="../assets/frontpage/document.svg" alt="document illustration" class="img-responsive center-block">
+                <div class="col-lg">
+                    <!-- <video controls class="embed-responsive">
+                        <source src="../assets/frontpage/klynger.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video> -->
                 </div>
             </div>
             <div class="row info__container">
-                <div class="col-sm">
-                    <img src="../assets/frontpage/chat.svg" alt="chat mockup" class="img-responsive center-block">
+                <div class="col-lg">
+                    <img src="../assets/frontpage/chat.svg" alt="chat mockup" class="img-responsive">
                 </div>
-                <div class="col-sm">
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>    
+                <div class="col-lg">
+                    <h5>[OVERSKRIFT]</h5>
+                    <p>Udviklingen i sundhedsvæsnet stiller store krav til alle aktører – også til de praktiserende læger. De kendte krav om høj faglighed suppleres med krav om at prioritere rigtigt, om at kunne sætte ind overfor nye problemområder og om at kunne arbejde med kvalitet på tværs af sektorerne i sundhedsvæsnet. PLO og RLTN har set på, hvordan der kan skabes et kvalitetsarbejde, som kontinuerligt udvikler fagligheden og indsatserne i almen praksis. Det er ambitionen, at kvalitetsarbejdet skal nå ud til alle praktiserende læger og dermed komme alle patienter til gavn. [TILFØJ TEKST OMKRING VORES SYSTEM]</p>    
                 </div>
             </div>
         </section>
@@ -62,7 +67,7 @@ export default {
 
 .jumbotron {
     height: 45vh;
-    background-color: #4A33E8;
+    background-color: #2962ff;
     border-radius: 0;
 }
 
@@ -108,9 +113,14 @@ export default {
         margin-bottom: 4rem;
     }
 
+    .info__container .img-responsive {
+        width: 60%;
+        margin: 0 20%;
+    }
+
     .home__featured__img {
         height: 170px;
-        width: 255px;
+        width: 100%;
         object-fit: cover;
     }
 </style>

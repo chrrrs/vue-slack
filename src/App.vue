@@ -38,8 +38,4 @@ a:hover {
   display: none;
 }
 
-.modal-open {
-  padding-right: 0; 
-}
-
 </style>

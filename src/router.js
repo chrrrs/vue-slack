@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import ICPC from './pages/Icpc'
 import Support from './pages/Support'
 import Article from './pages/Article'
+import About from './pages/About'
 
 Vue.use(Router)
 
@@ -39,6 +40,10 @@ export default new Router({
     {
       path: '/icpc',
       component: ICPC
+    },
+    {
+      path: '/om',
+      component: About
     },
     {
       path: '/support',

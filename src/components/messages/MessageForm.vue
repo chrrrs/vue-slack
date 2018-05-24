@@ -2,11 +2,11 @@
   <div class="messages__form">
     <div class="form-group container">
       <div class="row container message__form__container">
-        <div class="col-sm-8">
+        <div class="col-sm-8 input-group">
           <textarea class="form-control" name="message" id="message" v-model.trim="message" rows="3" placeholder="skriv besked..."></textarea>
         </div>
-        <div class="col-sm-4">
-          <button class="btn btn-lg btn-success" @click.prevent="sendMessage">send</button>
+        <div class="col-sm-4 btn-group">
+          <button class="btn btn-lg btn__send" @click.prevent="sendMessage">send</button>
           <button class="btn btn-lg" @click="openFileModal" :class="{'disabled': uploadState == 'uploading'}"><i class="far fa-file"></i></button>
         </div>
       </div>
@@ -175,6 +175,18 @@ export default {
   .message__form__container {
     margin: 0 auto;
     padding-top: 1.5rem;
+  }
+
+  .btn__send {
+    background-color: #2962ff;
+    color: white;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 991px) {
+    .messages__form {
+      left: 0;
+    }
   }
 
 </style>

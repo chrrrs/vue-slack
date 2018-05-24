@@ -1,7 +1,6 @@
 <template>
   <div class="messages__container">
     <div class="messages__content">
-      <h2 class="ui inverted center aligned header"> {{ channelName }}</h2>
       <div>
         <div class="container-fluid">
           <!-- Single messages -->
@@ -9,12 +8,12 @@
             <span :class="message" v-for="message in messages" :key="message.id">
               <div v-if="selfMessage(message.user)">
               <div class="row user__message__wrapper">
-                <div class="content message__wrapper">
+                <div class="message__wrapper">
                   <a>{{ message.user.name }}</a>
-                  <div class="metadata">
+                  <div>
                     <span class="text-muted comment__date">{{ message.timestamp | fromNow }}</span>
                   </div>
-                  <div class="text" v-if="!isFile(message)">
+                  <div v-if="!isFile(message)">
                     {{ message.content }}
                   </div>
                   <img class="img-fluid comment__image" :src="message.image" alt="billede" v-else>
@@ -31,7 +30,7 @@
                 </a>
                 <div class="content message__wrapper" :class="{'comment__self': selfMessage(message.user)}">
                   <a>{{ message.user.name }}</a>
-                  <div class="metadata">
+                  <div>
                     <span class="text-muted comment__date">{{ message.timestamp | fromNow }}</span>
                   </div>
                   <div class="text" v-if="!isFile(message)">
@@ -43,8 +42,6 @@
               </div>
             </span>
           </transition-group>
-          <!-- <single-message :class="message" v-for="message in messages"></single-message> -->
-
         </div>
       </div>
     </div>
@@ -57,13 +54,12 @@
 
 <script>
   import MessageForm from './MessageForm'
-  import SingleMessage from './SingleMessage'
   import {mapGetters} from 'vuex'
   import moment from 'moment'
 
   export default {
     name: 'Messages',
-    components: { MessageForm, SingleMessage },
+    components: { MessageForm },
     data() {
       return {
         messagesRef: firebase.database().ref('messages'),
@@ -156,9 +152,15 @@
     margin-left: 300px;
     min-height: 100vh;
   }
+
   .messages__container .comments{
     font-size: 1.2em;
   }
+
+  .messages__content {
+    margin-top: 70px;
+  }
+
   .list-enter-active{
     transition: all 0.3s
   }
@@ -186,10 +188,6 @@
    color: #767676;
   }
 
-  .content {
-    padding-left: 10px;
-  }
-
   .message__wrapper {
     background-color: #fff;
     padding: 1rem 1.5rem;
@@ -200,5 +198,19 @@
 
   .user__message__wrapper {
     justify-content: flex-end
+  }
+
+  @media screen and (max-width: 991px) {
+    .messages__container {
+      margin-left: 0;
+    }
+
+    .img-circle {
+      width: 15%;
+    }
+
+    .messages__container {
+      padding: 10px 20px 210px 20px;
+    }
   }
 </style>

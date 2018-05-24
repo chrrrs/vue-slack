@@ -84,7 +84,7 @@
 .navbar {
   padding: .5rem 1rem .5rem 1rem;
   color: white;
-  background-color: #4A33E8;
+  background-color: #2962ff;
   font-weight: 600;
 }
 
@@ -107,7 +107,7 @@
 
 .logon__btn {
     padding: .5rem 1rem;
-    color: #4A33E8;
+    color: #2962ff;
     font-weight: 800;
     border-radius: .5rem;
     background-color: white;

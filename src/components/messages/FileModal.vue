@@ -1,29 +1,29 @@
 <template>
   <div class="my__modal modal" id="fileModal">
-        <span @click="closeFileModal" class="close__btn">
+        <!-- <span @click="closeFileModal" class="close__btn">
           <i class="fas fa-times"></i>
-        </span>
-        <div class="header">
+        </span> -->
+        <h3 class="container">
             Send en fil
-        </div>
-        <div class="content">
-            <div class="description">
-                <div class="ui header">Valg en fil <em>( jpg, png, 1 mb max )</em></div>
-                <form class="ui form">
-                    <div class="costume-file">
-                        <input class="costume-file-input" type="file" name="file" id="file" @change="addFile">
+        </h3>
+        <div class="container">
+            <div>
+                <div>Valg en fil <em>( jpg, png, 1 mb max )</em></div>
+                <form>
+                    <div class="form-group">
+                        <input class="form-control" type="file" name="file" id="file" @change="addFile">
                     </div>
                 </form>
 
             </div>
         </div>
-        <div class="actions" @click="closeFileModal">
-            <div class="ui black deny button">
+        <div class="container btn-group" @click="closeFileModal">
+            <div class="btn btn-outline-danger">
                 Annuller
             </div>
-            <div class="ui right green labeled icon button" @click.prevent="sendFile">
+            <div class="btn btn-success" @click.prevent="sendFile">
                 Send
-                <i class="checkmark icon"></i>
+                <i class="fas fa-check"></i>
             </div>
         </div>
     </div>
@@ -44,7 +44,6 @@ export default {
   methods: {
     addFile(e) {
       let files = e.target.files
-      console.log(files)
       if(files.length === 1) {
         this.file = files[0]
       }
@@ -91,6 +90,13 @@ export default {
   .close__btn {
     float: right;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 991px) {
+    .my__modal {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 
 </style>
