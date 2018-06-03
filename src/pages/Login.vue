@@ -85,6 +85,7 @@
 
 export default {
   name: 'login',
+  // input fra html formen, data bliver gemt på variabler
   data() {
     return {
       email: '',

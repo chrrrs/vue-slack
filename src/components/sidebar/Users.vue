@@ -4,11 +4,11 @@
       <div class="row">
         <img class="rounded-circle" :src="user.avatar" alt="avatar">
         <div>
-          <span class="user__label"> {{ user.name }}</span>
+          <span class="user__label font-weight-bold"> {{ user.name }}</span>
           <span class="status__label rounded-circle connection__label" :class="{'green': isOnline(user), 'red': !isOnline(user)}"></span>
-          <div class="ui red label channel__count circular" v-if="getNotification(user) >= 1">
-            {{ getNotification(user) }}
-          </div>
+          <span class="text-muted" v-if="getNotification(user) >= 1">
+            - {{ getNotification(user) }}
+          </span>
         </div>
       </div>
     </div>
@@ -186,6 +186,7 @@ export default {
     float:left!important;
     margin-right: 12px!important;
     margin-top: 5px;
+    margin-left: 5px;
   }
   .user__label {
     margin-top: 4px;

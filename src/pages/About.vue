@@ -3,10 +3,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg">
+                    <h5>[OVERSKRIFT]</h5>
                     <p>Et af delprojekterne var udvikling af IT-løsninger. Resultatet af dette arbejde er bl.a. udviklingen af Linkportalen, hvor lægen ud fra en ICPCdiagnose i sin journal ved et tastetryk på diagnosen kan få adgang til relevant struktureret information om diagnose, behandlingsmuligheder mv.</p>
                     <p>Et andet indsatsområde blev udvikling af IT-værktøjer, der kan hente kvalitetsoplysninger fra praksis' elektroniske journalsystemer - og arbejdet er konkretiseret i programmet Sentinel Datafangst. Formålet med at indhente data er at tilbagelevere analyserede oplysninger, som den enkelte læge kan bruge til udviklingen af kvaliteten i sin patientbehandling.</p>
                 </div>
                 <div class="col-lg">
+                    <h5>[OVERSKRIFT]</h5>
                     <p>Data til analyserne bliver opsamlet i en landsdækkende database kaldet Dansk AlmenMedicinsk Database - DAMD. Testningen af Sentinel Datafangstprogrammet og databasen er sket i et pilotprojekt, hvor 24 læger fra fortrinsvis Fyn og Nordjylland gennem et år har deltaget i en Sentinelregistrering, en Luftvejs APO (Audit Projekt Odense) registrering og/eller i en diabetes forløbsregistrering (stort set svarende Diabetes Forløbsydelsen jf. overenskomsten)</p>
                 </div>
             </div>
@@ -15,13 +17,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg">
+                        <h5>[OVERSKRIFT]</h5>
                         <p>DAK-E samarbejder med Danske Regioner, Kommuner og Praktiserende Lægers Organisation for at øge sammenhængen i det danske sundhedsvæsen. Formålet er at bedre kvaliteten af behandlingen samt øge den patientoplevede tilfredshed og sammenhængen i det danske sundhedsvæsen.</p>
                     </div>
                     <div class="col-lg">
-                        <!-- <video controls class="embed-responsive">
-                            <source src="../assets/frontpage/klynger.mp4" type="video/mp4">
+                        <video controls class="embed-responsive">
+                            <source src="../assets/videos/overgang.mp4" type="video/mp4">
                             Your browser does not support the video tag.
-                        </video> -->
+                        </video>
                     </div>
                 </div>
             </div>

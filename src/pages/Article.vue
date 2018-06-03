@@ -1,12 +1,9 @@
 <template>
     <div class="container article__container">
         <router-link class="back__btn" to="/icpc"><i class="back__icon fas fa-angle-left"></i>tilbage</router-link>
-        <div v-for="post in postById" :key="post.index">
-            <h2>{{ post.title.rendered }}</h2>
-            <div class="container">
-                <iframe class="embed-responsive-item container" width="500" height="515" src="https://www.youtube.com/embed/itkRVTqfPsE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-           <div v-html="post.content.rendered"></div>
+        <div class="container" v-for="post in postById" :key="post.index">
+            <h2 v-html="post.title.rendered"></h2>
+           <div class="article__content__container" v-html="post.content.rendered"></div>
         </div>
     </div>
 </template>
@@ -42,6 +39,16 @@ export default {
 
 .article__container {
     margin-top: 5rem
+}
+
+.article__container h2 {
+    margin-top: 1rem;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
 
 .back__btn {

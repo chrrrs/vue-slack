@@ -6,9 +6,7 @@
       </div>
       <div :class="{'search__view': searchContent}">
         <div v-for="post in searchPosts" :key="post.id" class="searchDiv">
-          <router-link v-if="searchContent.length >= 1" :to="{ name: 'Article', params: {id: post.id} }">
-            {{ post.title.rendered }}
-          </router-link>
+          <router-link v-if="searchContent.length >= 1" :to="{ name: 'Article', params: {id: post.id} }" v-html="post.title.rendered"></router-link>
         </div>
       </div>
   </form>

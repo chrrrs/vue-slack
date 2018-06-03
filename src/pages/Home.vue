@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="jumbotron">
-            
+            <img src="../assets/frontpage/hand__arrow__front.svg" alt="chat mockup" class="img-responsive arrow__cta__search">
         </div>
 
         <searchbar class="searchbar__position"></searchbar>
@@ -24,10 +24,10 @@
                     <p>At fremme og understøtte at alle praktiserende læger finder sammen i faglige fællesskaber (klynger), som mødes og arbejder med kvalitetsdata og kvalitetsudvikling. Det forudsættes, at programmet inddrager og bygger videre på den og de erfaringer, som allerede er etableret i relation til datadrevet kvalitetsudvikling og samarbejdet mellem almen praksis og regionerne.</p>    
                 </div>
                 <div class="col-lg">
-                    <!-- <video controls class="embed-responsive">
-                        <source src="../assets/frontpage/klynger.mp4" type="video/mp4">
+                    <video controls class="embed-responsive">
+                        <source src="../assets/videos/klynger.mp4" type="video/mp4">
                         Your browser does not support the video tag.
-                    </video> -->
+                    </video>
                 </div>
             </div>
             <div class="row info__container">
@@ -122,5 +122,12 @@ export default {
         height: 170px;
         width: 100%;
         object-fit: cover;
+    }
+
+    .arrow__cta__search {
+        position: relative;
+        top: 270px;
+        width: 80%;
+        height: 20%;
     }
 </style>

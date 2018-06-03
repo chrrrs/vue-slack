@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Chat from './pages/Chat'
@@ -26,7 +27,7 @@ export default new Router({
       component: Home
     },
     {
-      name: 'Chat',
+      name: 'Chat', // Parameter der ligger på stien chat, bruges som reference i App.vue
       path: '/chat',
       component: Chat,
       beforeEnter: (to, from, next) => {

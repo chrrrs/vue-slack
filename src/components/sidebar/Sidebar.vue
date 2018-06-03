@@ -4,7 +4,9 @@
     <div class="btn-group">  
       <div class="btn sidebar__close__btn" @click.prevent="closeSidebar"><i class="fas fa-angle-left"></i></div>
     </div>
+    <h2>Grupper</h2>
     <Channels></Channels>
+    <h2>Læger</h2>
     <users></users>
   </div>
 </template>

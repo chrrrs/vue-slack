@@ -5,6 +5,7 @@
             <p class="col-md-12 text-center">Forsøg vores nye chat system, her vil det ikke kun være muligt at kontakte support men også dine kollegaer. </p>
             <div class="support__text__btn text-center">Hello</div>
         </div>
+        <img src="../assets/hand__arrow__support.svg" alt="chat mockup" class="img-responsive arrow__cta__support">
         <div class="row">
             <div class="col-sm-4 support__side__container text-center">
                 <i class="far fa-envelope"></i><a href="support@dak-e.dk"> support@dak-e.dk</a>
@@ -47,6 +48,13 @@
         border-top: 10px solid #2962ff;
         font-weight: 500;
         padding: 1rem 0;
+    }
+
+    .arrow__cta__support {
+        position: relative;
+        top: 270px;
+        width: 80%;
+        height: 20%;
     }
 
     @media screen and (max-width: 575px) {

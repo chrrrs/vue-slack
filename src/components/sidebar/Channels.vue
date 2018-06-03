@@ -15,8 +15,8 @@
             <i class="fas fa-users"></i>
           </div>
           <p>{{ channel.name }}</p>
-          <div class="notification__label green circular channel__count" v-if="getNotification(channel) > 0 && channel.id !== currentChannel.id">
-            {{ getNotification(channel) }}
+          <div class="text-muted" v-if="getNotification(channel) > 0 && channel.id !== currentChannel.id">
+            - {{ getNotification(channel) }}
           </div>
         </li>
       </ul>
@@ -76,6 +76,7 @@ export default {
   },
   mixins: [mixin],
   computed: {
+    // Henter data fra Vuex (store.js), henter objekterne currentChannel og isPrivate
     ...mapGetters(['currentChannel', 'isPrivate']),
     hasErrors() {
       return this.errors.length > 0
@@ -200,7 +201,6 @@ export default {
 
   .channels__item p {
     margin-left: 1.5rem;
-    font-size: 1.5rem;
     color: #212529;
   }
 

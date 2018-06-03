@@ -94,6 +94,7 @@
 
 .nav-link {
   color: white;
+  font-size: 1.1em;
 }
 
 .nav__active {

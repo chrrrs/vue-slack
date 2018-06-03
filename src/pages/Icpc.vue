@@ -6,10 +6,10 @@
         <div class="container help__video__container">
             <div class="container">
                 <h5>[THIS IS TITLE]</h5>
-                <!-- <video controls class="embed-responsive">
-                    <source src="../assets/frontpage/klynger.mp4" type="video/mp4">
+                <video controls class="embed-responsive">
+                    <source src="../assets/videos/icpc.mp4" type="video/mp4">
                     Your browser does not support the video tag.
-                </video> -->
+                </video>
                 <p>[HERE GOES CONTENT]</p>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <li class="search__container__component" v-for="bPost in blogPosts" :key="bPost.id">
                 <div id="accordion container">
                     <div class="card">
-                        <div class="card-header" id="headingOne">
+                        <div class="card-header" data-toggle="collapse"  data-target=".multi-collapse" aria-expanded="false" :aria-controls="bPost.id">
                         <h5 class="mb-0"  v-html="bPost.title.rendered">
                         </h5>
                             <router-link :to="{ name: 'Article', params: {id: bPost.id} }">
@@ -31,10 +31,10 @@
                             </router-link>
                         </div>
 
-                        <!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body" v-html="bPost.content.rendered">
+                        <div class="collapse multi-collapse" :id="bPost.id">
+                            <div class="card card-body" v-html="bPost.excerpt.rendered">
+                            </div>
                         </div>
-                        </div> -->
                     </div>
                             <!-- <router-link :to="{ name: 'Article', params: {id: bPost.id} }">Læs mere</router-link> -->
                 </div>
@@ -61,7 +61,7 @@ export default {
       getPosts() {
 
           if(this.searchContent.length > 0) {
-              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=15')
+              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=10')
                 .then(response => response.json())
                 .then(posts => {
                     this.blogPosts = posts
@@ -81,6 +81,7 @@ export default {
       },
       toggleHelp() {
         $('.help__video__container').toggle()
+        
       }
   }
 }
@@ -91,7 +92,7 @@ export default {
 
 .icpc__wrapper {
     margin-top: 100px;
-    min-height: 90vh;
+    min-height: 85vh;
 }
 
 h1 {
@@ -145,11 +146,11 @@ h1 {
         bottom: 14%;
         padding: 0 1.5rem;
         font-size: 1.5em;
-        border-left: solid 2px #bdbdbd;
+        border-left: solid 2px #cecece;
     }
 
     .fa-angle-right {
-        color: #9e9e9e;
+        color: #cecece;
     }
 
     .help__video__container {
@@ -158,6 +159,14 @@ h1 {
         margin: 0px auto 2rem;
         padding: 20px;
         display: none;
+    }
+
+    .card {
+        border: none;
+    }
+
+    .card-header {
+        border: none;
     }
 
 </style>

@@ -38,4 +38,14 @@ a:hover {
   display: none;
 }
 
+.article__content__container img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.link-more {
+    display: none;
+  }
+
 </style>
