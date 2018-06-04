@@ -49,6 +49,10 @@
     display: none;
   }
 
+  .sidebar__container {
+      padding-top: 120px;
+    }
+
   @media screen and (min-width: 991px) {
     .sidebar__container {
       display: block !important;
@@ -76,7 +80,13 @@
     }
 
     .sidebar__container {
-      padding-top: 120px;
+      padding-top: 70px;
+    }
+  }
+
+  @media screen and (max-height: 800px) {
+    .sidebar__container {
+      padding-top: 70px;
     }
   }
 </style>

@@ -1,16 +1,16 @@
 <template>
     <div class="container icpc__wrapper">
         <div>
-            <h1>ICPC Søgemaskine<span class="icon-wrapper" @click="toggleHelp"><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Hvad er ICPC?"></i></span></h1>
+            <h1>ICPC Søgemaskine<span @click="toggleHelp"><span class="fas fa-question-circle icon__wrapper" data-toggle="tooltip" data-placement="right" title="Hvad er ICPC?"></span></span></h1>
         </div>
         <div class="container help__video__container">
             <div class="container">
-                <h5>[THIS IS TITLE]</h5>
-                <video controls class="embed-responsive">
+                <h5>ICPC</h5>
+                <video controls class="embed-responsive" poster="../assets/videos/ICPC.png">
                     <source src="../assets/videos/icpc.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p>[HERE GOES CONTENT]</p>
+                <p>ICPC-“diagnoserne” er et lægeligt, forståeligt, sprogligt udtryk, som er koblet til en 3-cifret ICPC-kode. Denne kode gør det muligt for IT-systemet at sortere “diagnoserne”, så lægen på et givet tidspunkt kan trække relevante jornalnotater frem. De grundlæggende principper for at ICPC-kode patientkontakter i praksis er samlet i en oversigt. Den giver dig vejleding i, hvordan du via systematiske overvejelser kommer frem til, hvike(n) ICPC-kode(r) du skal sætte på det enkelte patientbesøg. </p>
             </div>
         </div>
         <form>
@@ -21,23 +21,25 @@
         </form>
         <ul>
             <li class="search__container__component" v-for="bPost in blogPosts" :key="bPost.id">
+             <router-link :to="{ name: 'Article', params: {id: bPost.id} }">
                 <div id="accordion container">
                     <div class="card">
                         <div class="card-header" data-toggle="collapse"  data-target=".multi-collapse" aria-expanded="false" :aria-controls="bPost.id">
                         <h5 class="mb-0"  v-html="bPost.title.rendered">
                         </h5>
-                            <router-link :to="{ name: 'Article', params: {id: bPost.id} }">
+                           
                                 <span class="article__arrow"><i class="fas fa-angle-right"></i></span>
-                            </router-link>
+                            
                         </div>
 
-                        <div class="collapse multi-collapse" :id="bPost.id">
+                        <!-- <div class="collapse multi-collapse" :id="bPost.id">
                             <div class="card card-body" v-html="bPost.excerpt.rendered">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                             <!-- <router-link :to="{ name: 'Article', params: {id: bPost.id} }">Læs mere</router-link> -->
                 </div>
+            </router-link>
             </li>
         </ul>
     </div>
@@ -61,13 +63,13 @@ export default {
       getPosts() {
 
           if(this.searchContent.length > 0) {
-              fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=10')
+              fetch('https://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=10')
                 .then(response => response.json())
                 .then(posts => {
                     this.blogPosts = posts
                 })
           } else {
-            fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts')
+            fetch('https://www.kiap.chriseckert.dk/wp-json/wp/v2/posts')
             .then(response => response.json())
             .then(posts => {
                 this.blogPosts = posts
@@ -105,8 +107,13 @@ h1 {
 
 .fa-question-circle {
     padding-bottom: 10px;
-    font-size: 1.7em;
+    font-size: 1.2em;
     cursor: pointer;
+}
+
+.icon__wrapper {
+    position: relative;
+    bottom: 10px;
 }
 
 .input-group>.form-control:not(:last-child) {
@@ -115,7 +122,6 @@ h1 {
     }
 
     .search__icon__wrapper {
-        background-color: white;
         border: none;
         border-radius: 0;
         z-index: 5;

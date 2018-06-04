@@ -1,7 +1,7 @@
 <template>
   <div class="channels__container">
     <div class="add__group__btn" @click="openChannelModal">
-      <h2>Tilføj gruppe <i class="fas fa-users"></i></h2>
+      <h2>Opret klynge <i class="fas fa-users"></i></h2>
     </div>
     <div class="channels__list container">
       <ul>
@@ -180,7 +180,7 @@ export default {
 
   .channels__list {
     min-height: 100px;
-    max-height: 300px!important;
+    max-height: 30vh!important;
     overflow-y: auto!important;
   }
   .channels__container ul{

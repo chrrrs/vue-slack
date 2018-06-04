@@ -166,7 +166,7 @@ export default {
 
   .users__container{
     min-height: 100px;
-    max-height: 300px!important;
+    max-height: 30vh!important;
     overflow-y: auto!important;
   }
 

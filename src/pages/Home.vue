@@ -24,7 +24,7 @@
                     <p>At fremme og understøtte at alle praktiserende læger finder sammen i faglige fællesskaber (klynger), som mødes og arbejder med kvalitetsdata og kvalitetsudvikling. Det forudsættes, at programmet inddrager og bygger videre på den og de erfaringer, som allerede er etableret i relation til datadrevet kvalitetsudvikling og samarbejdet mellem almen praksis og regionerne.</p>    
                 </div>
                 <div class="col-lg">
-                    <video controls class="embed-responsive">
+                    <video controls class="embed-responsive" poster="../assets/videos/Klynger.png">
                         <source src="../assets/videos/klynger.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>

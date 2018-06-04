@@ -66,4 +66,32 @@
       display: none;
     }
   }
+
+  @media screen and (max-height: 590px) {
+    .mobile__sidebar__btn {
+      display: block;
+      position: fixed;
+      top: 100px;
+      left: 0;
+      z-index: 1;
+      padding: 0.5rem 2rem;
+      border-radius: 0 1rem 1rem 0;
+      border: none;
+      background-color: #2962ff;
+      -webkit-box-shadow: 4px 0px 12px 0px rgba(0,0,0,0.25);
+      -moz-box-shadow: 4px 0px 12px 0px rgba(0,0,0,0.25);
+      box-shadow: 4px 0px 12px 0px rgba(0,0,0,0.25);
+    }
+
+    .fa-angle-right {
+      margin-left: .5rem;
+      margin-right: -.7rem;
+      color: white;
+    }
+
+    .sidebar {
+      width: 100%;
+      display: none;
+    }
+  }
 </style>

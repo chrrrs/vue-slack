@@ -25,7 +25,7 @@ export default {
   },
   methods: {
       getPost() {
-          fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?include[]=' + this.id)
+          fetch('https://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?include[]=' + this.id)
           .then(response => response.json())
           .then(post => {
               this.postById = post

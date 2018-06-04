@@ -24,7 +24,7 @@ export default {
   methods: {
     searchbarListener() {
         if(this.searchContent.length > 1) {
-          fetch('http://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=5')
+          fetch('https://www.kiap.chriseckert.dk/wp-json/wp/v2/posts/?search=' + this.searchContent + '&per_page=5')
             .then(response => response.json())
             .then(posts => {
                 this.searchPosts = posts
@@ -45,7 +45,6 @@ export default {
     }
 
     .search__icon__wrapper {
-        background-color: white;
         border: none;
         border-radius: 0;
         z-index: 5;

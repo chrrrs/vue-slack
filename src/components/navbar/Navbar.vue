@@ -107,7 +107,7 @@
 }
 
 .logon__btn {
-    padding: .5rem 1rem;
+    padding: .3rem 1rem;
     color: #2962ff;
     font-weight: 800;
     border-radius: .5rem;
