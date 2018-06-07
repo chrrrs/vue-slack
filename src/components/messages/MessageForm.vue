@@ -12,18 +12,6 @@
       </div>
     </div>
 
-    <!-- Progress Bar -->
-    <!-- <div class="ui small orange inverted progress" data-total="100" id="uploadedFile" v-if="uploadState != null">
-      <div class="bar">
-        <div class="progress"></div>
-      </div>
-      <div class="label">{{ uploadLabel }}</div>
-    </div> -->
-
-    <div class="progress" v-if="uploadState != null">
-      <div id="uploadedFile" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" v-bind:style="{width: this.progressPercentage + '%'}"></div>
-    </div>
-
     <!-- File modal -->
     <file-modal ref="file_modal"></file-modal>
   </div>
@@ -98,9 +86,6 @@ export default {
       this.uploadState = 'uploading'
 
       this.uploadTask.on('state_changed', snap => {
-        let percent = (snap.bytesTransferred /snap.totalBytes) * 100
-        $("#uploadedFile").progress('set percent', percent)
-        this.progressPercentage = percent
 
       }, error => {
         // error
