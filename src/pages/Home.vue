@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="jumbotron">
-            <img src="../assets/frontpage/hand__arrow__front.svg" alt="chat mockup" class="img-responsive arrow__cta__search">
+            <img src="../assets/frontpage/arrow__home.svg" alt="chat mockup" class="img-responsive arrow__cta__search">
         </div>
 
         <searchbar class="searchbar__position"></searchbar>
@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md" v-for="mainContent in mainContents" :key="mainContent.id">
                     <router-link class="img__link" :to="mainContent.link">
-                        <img :src="mainContent.image" :alt="mainContent.title" class="img-fluid home__featured__img">
+                        <img :src="mainContent.image" :alt="mainContent.title" class="img-fluid home__featured__img lazy">
                         <span class="content__tag">{{ mainContent.title }}</span>
                     </router-link>
                 </div>
@@ -20,8 +20,8 @@
         <section class="new__user__content container">
             <div class="row info__container">
                 <div class="col-lg">
-                    <h5>Program for kvalitetsudvikling i almen praksis har til formål.</h5>
-                    <p>At fremme og understøtte at alle praktiserende læger finder sammen i faglige fællesskaber (klynger), som mødes og arbejder med kvalitetsdata og kvalitetsudvikling. Det forudsættes, at programmet inddrager og bygger videre på den og de erfaringer, som allerede er etableret i relation til datadrevet kvalitetsudvikling og samarbejdet mellem almen praksis og regionerne.</p>    
+                    <h5>Hvordan kommer vi i gang med klyngearbejdet?</h5>
+                    <p>Denne vejledning guider dig som klyngekoordinator samt dine klyngekollegaer igennem den første proces omkring opstart af en klynge. Der arbejdes i Programsekretariatet samt i PLO og Danske Regioner løbende på at få både rammer og indhold for klyngerne på plads, men vi opfordrer jer til at gå i gang med at etablere klyngerne og tage hul på arbejdet så snart I har fundet sammen i en klynge. </p>    
                 </div>
                 <div class="col-lg">
                     <video controls class="embed-responsive" poster="../assets/videos/Klynger.png">
@@ -35,8 +35,8 @@
                     <img src="../assets/frontpage/chat.svg" alt="chat mockup" class="img-responsive">
                 </div>
                 <div class="col-lg">
-                    <h5>[OVERSKRIFT]</h5>
-                    <p>Udviklingen i sundhedsvæsnet stiller store krav til alle aktører – også til de praktiserende læger. De kendte krav om høj faglighed suppleres med krav om at prioritere rigtigt, om at kunne sætte ind overfor nye problemområder og om at kunne arbejde med kvalitet på tværs af sektorerne i sundhedsvæsnet. PLO og RLTN har set på, hvordan der kan skabes et kvalitetsarbejde, som kontinuerligt udvikler fagligheden og indsatserne i almen praksis. Det er ambitionen, at kvalitetsarbejdet skal nå ud til alle praktiserende læger og dermed komme alle patienter til gavn. [TILFØJ TEKST OMKRING VORES SYSTEM]</p>    
+                    <h5>Datadrevet Kvalitetsudvikling</h5>
+                    <p>Udviklingen i sundhedsvæsnet stiller store krav til alle aktører – også til de praktiserende læger. De kendte krav om høj faglighed suppleres med krav om at prioritere rigtigt, om at kunne sætte ind overfor nye problemområder og om at kunne arbejde med kvalitet på tværs af sektorerne i sundhedsvæsnet. PLO og RLTN har set på, hvordan der kan skabes et kvalitetsarbejde, som kontinuerligt udvikler fagligheden og indsatserne i almen praksis. Det er ambitionen, at kvalitetsarbejdet skal nå ud til alle praktiserende læger og dermed komme alle patienter til gavn. Kvalitet i almen praksis (KiAP) har i samarbejde med PLO udviklet et system, der har til formål at forbedre den interne kommunikation for praktiserende læger. Det er nøgleord som reflektion over egen praksis, og muligheden for at bruge andre læger som sparringspartnere. KiAP har i tæt samarbejde med tilknyttede læger udviklet et internt chat system, der giver mulighed for at oprette klynger, og udveklse data med hinanden. Derudover er det blevet nemmere at komme i kontakt med support og få hjælp til eventuelle problemer.</p>    
                 </div>
             </div>
         </section>
@@ -55,8 +55,8 @@ export default {
             mainContents: [
                 {image: 'https://images.pexels.com/photos/407237/pexels-photo-407237.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', title: 'Support', link: '/support'},
                 {image: 'https://images.pexels.com/photos/462680/pexels-photo-462680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', title: 'ICPC', link: '/icpc'},
-                {image: 'https://images.pexels.com/photos/429248/pexels-photo-429248.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', title: 'DANPEP', link: '/danpep'},
-                {image: 'https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', title: 'Akkreditering', link: '/akkreditering'}
+                {image: 'https://images.pexels.com/photos/813940/pexels-photo-813940.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', title: 'Om KiAP', link: '/om'},
+                {image: 'https://images.pexels.com/photos/1112643/pexels-photo-1112643.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', title: 'Chat', link: '/chat'}
             ]
         }
     }
@@ -69,6 +69,20 @@ export default {
     height: 45vh;
     background-color: #2962ff;
     border-radius: 0;
+    background: linear-gradient(
+      rgb(41, 98, 255, 0.85), 
+      rgb(41, 98, 255, 0.85)
+    ), url('https://images.pexels.com/photos/590037/pexels-photo-590037.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.arrow__cta__search {
+    position: absolute;
+    /* top: 350px; */
+    width: 25%;
+    left: 5%;
+    bottom: 50px;
 }
 
 .main__section {
@@ -124,10 +138,10 @@ export default {
         object-fit: cover;
     }
 
-    .arrow__cta__search {
-        position: relative;
-        top: 270px;
-        width: 80%;
-        height: 20%;
+    @media screen and (max-width: 760px) {
+        .arrow__cta__search {
+            display: none;
+        }
     }
+
 </style>

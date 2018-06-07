@@ -2,7 +2,7 @@
   <form>
       <div class="input-group searchbar__position">
         <input v-model="searchContent" v-on:input="searchbarListener" class="form-control form-control-lg" type="text" aria-label="search" placeholder="Søg..." />
-        <i class="search__icon__wrapper fas fa-search"></i>
+        <span class="search__icon__wrapper"><i class="fas fa-search"></i></span>
       </div>
       <div :class="{'search__view': searchContent}">
         <div v-for="post in searchPosts" :key="post.id" class="searchDiv">
@@ -52,7 +52,7 @@ export default {
         right: 1rem;
         bottom: 0;
         top: 0;
-        margin-top: 1rem;
+        margin-top: .8rem;
         color: #2962ff;
         cursor: pointer;
     }

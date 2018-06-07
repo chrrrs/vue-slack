@@ -1,7 +1,9 @@
 <template>
   <div class="chat__container">
     <div class="btn-group">
-      <button class="btn mobile__sidebar__btn" @click.prevent="openSidebar"><i class="fas fa-angle-right"></i></button>
+      <button class="btn mobile__sidebar__btn" @click.prevent="openSidebar">
+        <i class="fas fa-angle-right"></i>
+      </button>
     </div>
     <sidebar class="sidebar"></sidebar>
     <messages></messages>
@@ -59,6 +61,8 @@
       margin-left: .5rem;
       margin-right: -.7rem;
       color: white;
+      width: .8rem;
+      margin-top: 5px;
     }
 
     .sidebar {

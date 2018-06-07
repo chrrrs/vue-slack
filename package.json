@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
-  "dependencies": { 
+  "dependencies": {
     "firebase": "^4.10.1",
     "md5": "^2.2.1",
     "mime-types": "^2.1.18",

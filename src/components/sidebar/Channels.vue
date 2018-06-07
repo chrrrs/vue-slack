@@ -199,6 +199,10 @@ export default {
     align-items: center;
   }
 
+  .channels__container .row:hover{
+    background: #FFFFFF;
+  }
+
   .channels__item p {
     margin-left: 1.5rem;
     color: #212529;

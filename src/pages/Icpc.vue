@@ -1,7 +1,13 @@
 <template>
     <div class="container icpc__wrapper">
         <div>
-            <h1>ICPC Søgemaskine<span @click="toggleHelp"><span class="fas fa-question-circle icon__wrapper" data-toggle="tooltip" data-placement="right" title="Hvad er ICPC?"></span></span></h1>
+            <h1>ICPC Søgemaskine
+                <span @click="toggleHelp">
+                    <span class="icon__wrapper" data-toggle="tooltip" data-placement="right" title="Hvad er ICPC?">
+                        <i class="fas fa-question-circle"></i>
+                    </span>
+                </span>
+            </h1>
         </div>
         <div class="container help__video__container">
             <div class="container">
@@ -16,10 +22,11 @@
         <form>
             <div class="input-group searchbar__position">
                 <input v-model="searchContent" v-on:input="getPosts" class="form-control form-control-lg" type="text" aria-label="search" placeholder="Søg..." />
-                <i class="search__icon__wrapper fas fa-search"></i>
+                <span class="search__icon__wrapper"><i class="fas fa-search"></i></span>
             </div>
         </form>
-        <ul>
+        <div class="lds-ring" v-if="this.blogPosts.length == 0"><div></div><div></div><div></div><div></div></div>
+        <ul v-else>
             <li class="search__container__component" v-for="bPost in blogPosts" :key="bPost.id">
              <router-link :to="{ name: 'Article', params: {id: bPost.id} }">
                 <div id="accordion container">
@@ -129,7 +136,7 @@ h1 {
         right: 1rem;
         bottom: 0;
         top: 0;
-        margin-top: 1rem;
+        margin-top: .8rem;
         color: #2962ff;
         cursor: pointer;
     }
@@ -167,6 +174,10 @@ h1 {
         display: none;
     }
 
+    .help__video__container p {
+        margin-top: 10px;
+    }
+
     .card {
         border: none;
     }
@@ -174,5 +185,41 @@ h1 {
     .card-header {
         border: none;
     }
+
+.lds-ring {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 5rem auto;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #2962ff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #2962ff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 </style>

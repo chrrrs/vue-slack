@@ -19,29 +19,24 @@
                 <div class="col-6 col-md">
                     <h5>Services</h5>
                     <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">ICPC</a></li>
-                    <li><a class="text-muted" href="#">DANPEP</a></li>
-                    <li><a class="text-muted" href="#">Akkreditering</a></li>
+                    <li @click="scrollToTop"><router-link class="text-muted" to="/icpc">ICPC</router-link></li>
                         <ul class="list-unstyled text-small" v-if="this.currentUser">
-                            <li><a class="text-muted" href="#">Chat</a></li>
-                            <li><a class="text-muted" href="#">Filer</a></li>
+                            <li @click="scrollToTop"><router-link class="text-muted" to="/chat">Chat</router-link></li>
                         </ul>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
                     <h5>Om KiAP</h5>
                     <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Medarbejdere</a></li>
-                    <li><a class="text-muted" href="#">Historie</a></li>
+                    <li @click="scrollToTop"><router-link class="text-muted" to="/om">Om</router-link></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
                     <h5>Kontakt</h5>
                     <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Support</a></li>
-                        <ul class="list-unstyled text-small" v-if="this.currentUser">
-                            <li><a class="text-muted" href="#">Hjælp</a></li>
-                        </ul>
+                    <li @click="scrollToTop"><router-link class="text-muted" to="/support">Support</router-link></li>
+                    <li><p class="text-muted"><i class="fas fa-mobile-android-alt"></i> 6550 4550</p></li>
+                    <li><p class="text-muted"><i class="far fa-envelope"></i> support@dak-e.dk</p></li>
                     </ul>
                 </div>
             </div>
@@ -57,6 +52,12 @@ export default {
   computed: {
       ...mapGetters(['currentUser'])
     },
+    methods: {
+        scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    }
 }
 </script>
 
@@ -83,6 +84,11 @@ export default {
         padding: .5rem 1rem;
         color: #2962ff;
         font-weight: 600;
+        height: 50%;
+    }
+
+    li p {
+        margin-bottom: 0px;
     }
 
 

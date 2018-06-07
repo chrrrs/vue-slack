@@ -3,13 +3,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg">
-                    <h5>[OVERSKRIFT]</h5>
-                    <p>Et af delprojekterne var udvikling af IT-løsninger. Resultatet af dette arbejde er bl.a. udviklingen af Linkportalen, hvor lægen ud fra en ICPCdiagnose i sin journal ved et tastetryk på diagnosen kan få adgang til relevant struktureret information om diagnose, behandlingsmuligheder mv.</p>
-                    <p>Et andet indsatsområde blev udvikling af IT-værktøjer, der kan hente kvalitetsoplysninger fra praksis' elektroniske journalsystemer - og arbejdet er konkretiseret i programmet Sentinel Datafangst. Formålet med at indhente data er at tilbagelevere analyserede oplysninger, som den enkelte læge kan bruge til udviklingen af kvaliteten i sin patientbehandling.</p>
+                    <h5>Samarbejde</h5>
+                    <p>KiAP er etableret af PLO (Praktiserende Lægers Organisation) og Danske Regioner i fællesskab med henblik på at udvikle og sikre kvaliteten i almen praksis som en del af det samlede sundhedsvæsen. Derudover er det at fremme forskning, som har betydning for kvaliteten i almen praksis og det samlede sundhedsvæsen.</p>
                 </div>
                 <div class="col-lg">
-                    <h5>[OVERSKRIFT]</h5>
-                    <p>Data til analyserne bliver opsamlet i en landsdækkende database kaldet Dansk AlmenMedicinsk Database - DAMD. Testningen af Sentinel Datafangstprogrammet og databasen er sket i et pilotprojekt, hvor 24 læger fra fortrinsvis Fyn og Nordjylland gennem et år har deltaget i en Sentinelregistrering, en Luftvejs APO (Audit Projekt Odense) registrering og/eller i en diabetes forløbsregistrering (stort set svarende Diabetes Forløbsydelsen jf. overenskomsten)</p>
+                    <h5>KiAP</h5>
+                    <p>KiAP skal arbejde fokuseret med kvalitetsudvikling i almen praksis, først og fremmest skal KiAP fremme og understøtte de klynger, der løbende etableres over hele landet. KiAP skal drive det arbejde, der skal sikre klyngerne et godt fundament at drive kvalitetsudvikling på.</p>
                 </div>
             </div>
         </div>
@@ -17,11 +16,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg">
-                        <h5>[OVERSKRIFT]</h5>
-                        <p>DAK-E samarbejder med Danske Regioner, Kommuner og Praktiserende Lægers Organisation for at øge sammenhængen i det danske sundhedsvæsen. Formålet er at bedre kvaliteten af behandlingen samt øge den patientoplevede tilfredshed og sammenhængen i det danske sundhedsvæsen.</p>
+                        <h5>KiAP Projektet</h5>
+                        <p>Det helt store indsatsområde er blevet udvikling af IT-værktøjer, der kan hente kvalitetsoplysninger fra praksis’ elektroniske journalsystemer. Formålet med at indhente data er at tilbagelevere analyserede oplysninger, som den enkelte læge kan bruge til udviklingen af kvaliteten i sin patientbehandling. </p>
                     </div>
                     <div class="col-lg">
-                        <video controls class="embed-responsive">
+                        <video controls class="embed-responsive" poster="../assets/videos/Overgang.png">
                             <source src="../assets/videos/overgang.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -37,7 +36,9 @@
                     <img :src="employee.image" :alt="employee.altText">
                     <p>{{ employee.altText }}</p>
                     <p class="text-muted">{{ employee.title }}</p>
-                    <a :href="employee.mail"><i class="far fa-envelope"></i> {{ employee.mail }}</a>
+                    <a :href="employee.mail">
+                        <i class="far fa-envelope"></i> {{ employee.mail }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -88,5 +89,10 @@ export default {
 
     .employee__container p {
         margin-bottom: 0;
+    }
+    
+    .employee__container svg {
+        fill: #212529;
+        vertical-align: sub;
     }
 </style>
